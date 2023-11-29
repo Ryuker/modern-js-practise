@@ -18,7 +18,6 @@
 // cmd + shift + F | search in whole project
 
 // ctrl + ~ | toggles the terminal
-//  
 
 
 

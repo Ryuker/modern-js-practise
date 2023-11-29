@@ -23,6 +23,11 @@ console.group('simple');
   console.warn('Warning');
 console.groupEnd();
 
+const styles = 'padding: 10px; background-color: black; color: white;';
+console.log('%cHello World', styles);
+
+
+
 
 
 

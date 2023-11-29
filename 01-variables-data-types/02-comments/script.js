@@ -9,8 +9,19 @@
 // cmd+g | add the next occurence to the highlights
 // alt + left / right arrow skips to the next word
 // cmd + left/right arrow skips to the end/beginnen of the line
-// alt + shift + left/right arrow adds/contracts words from the selection 
-// you can click with al to select multiple words to edit in one key stroke
+// alt + shift + left/right arrow | adds/contracts words from the selection 
+// you can click with alt to select multiple words to edit in one key stroke
+// cmd + alt + A | multiple line comment selection
+// cmd + shift + O | search for a file
+
+// cmd + F | search in file
+// cmd + shift + F | search in whole project
+
+// ctrl + ~ | toggles the terminal
+//  
+
+
+
 
 
 

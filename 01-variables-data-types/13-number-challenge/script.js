@@ -1,13 +1,13 @@
-let x = Math.random(1, 100);
-let y = Math.random(1, 50);
+let x = Math.random();
+let y = Math.random();
 let sumOutput;
 let diffOutput;
 let productOutput;
 let quotientOutput;
 let remainderOutput;
 
-x = Math.floor(x * 100);
-y = Math.floor(y * 100);
+x = Math.floor(x * 100 + 1); // add + 1 since we start from 0
+y = Math.floor(y * 50 + 1); // add + 1 since we start from 0
 
 sum = `${x} + ${y} = ${x + y}`;
 diffOutput = `${x} - ${y.toString()} = ${x - y}`;
@@ -24,3 +24,6 @@ console.log("diff: " + diffOutput);
 console.log("product: " + productOutput);
 console.log("quotient: " + quotientOutput);
 console.log("remainder: " + remainderOutput);
+
+// Challenge solution from video
+

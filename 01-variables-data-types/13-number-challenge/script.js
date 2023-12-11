@@ -10,7 +10,7 @@ x = Math.floor(x * 100 + 1); // add + 1 since we start from 0
 y = Math.floor(y * 50 + 1); // add + 1 since we start from 0
 
 sum = `${x} + ${y} = ${x + y}`;
-diffOutput = `${x} - ${y.toString()} = ${x - y}`;
+diffOutput = `${x} - ${y} = ${x - y}`;
 productOutput = `${x} * ${y} = ${x * y}`;
 quotientOutput = `${x} / ${y} = ${x / y}`;
 remainderOutput = `${x} % ${y} = ${x % y}`;

@@ -6,28 +6,28 @@ const library = [
     title: 'The Fellowship of the Ring', 
     author: 'J.R Tolkien', 
     status: {
-    own: true,
-    reading: false,
-    read: false
-  }
+      own: true,
+      reading: false,
+      read: false
+    }
  },
   {
     title: 'The Two Towers', 
     author: 'J.R Tolkien', 
     status: {
-    own: true,
-    reading: false,
-    read: false
-  }
+      own: true,
+      reading: false,
+      read: false
+    }
  },
   {
     title: 'Return of the King', 
     author: 'J.R Tolkien', 
     status: {
-    own: true,
-    reading: false,
-    read: false
-  }
+      own: true,
+      reading: false,
+      read: false
+    }
  },
  
 ];

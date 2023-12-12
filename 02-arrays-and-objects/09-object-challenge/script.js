@@ -58,5 +58,10 @@ const str = JSON.stringify(library);
 
 console.log(str);
 
+// parse string to JSON
+const object = JSON.parse(str);
+
+console.log(object);
+
 
 

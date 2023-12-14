@@ -48,7 +48,7 @@ function minMaxV (arr) {
 console.log(minMaxV([1, 2, 3, 4, 5]));
 
 // Challenge 3:
-console.log('Challenge 3: IFFE');
+console.log('Challenge 3: IIFE');
 // - create an IIFE (Immediately Invoked Function Expression)
 // - that takes in the length and width of a rectangle and outputs it to the console in a message as soon as the page loads
 ((length, width) => {

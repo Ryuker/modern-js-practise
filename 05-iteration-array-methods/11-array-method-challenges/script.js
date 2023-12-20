@@ -64,3 +64,13 @@ console.log(youngPeopleV);
 // Challenge 2: 
 // - Add all the positive numbers in the array
 console.log('Challenge 2: Add all the positive numbers in the array');
+const numbers = [2, -30, 50, 20, -12, -9, 7];
+const positiveTotal = numbers
+  .filter( num => Math.sign(num) === 1 )
+  .reduce((acc, num) => acc += num );
+
+  console.log('positive total: ' + positiveTotal);
+
+// Video solution - Challenge 2
+console.log('Video solution - Challenge 2');
+

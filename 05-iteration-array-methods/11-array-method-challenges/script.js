@@ -93,4 +93,7 @@ console.log(capitalized);
 // Video solution - Challenge 3
 console.log('Video solution - Challenge 3');
 
-// const capitalizedV = word.map();
+const cWords = words.map( word => {
+  return word[0].toUpperCase() + word.slice(1);
+});
+console.log(cWords);

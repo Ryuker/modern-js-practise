@@ -53,3 +53,14 @@ console.log(youngPeople);
 
 // Video Solution - Challenge 1
 console.log('Video Solution - Challenge 1');
+const youngPeopleV = people
+  .filter(person => person.age <= 25)
+  .map(person => (
+    {name: person.firstName + ' ' + person.lastName, email: person.email}
+  ));
+
+console.log(youngPeopleV);
+
+// Challenge 2: 
+// - Add all the positive numbers in the array
+console.log('Challenge 2: Add all the positive numbers in the array');

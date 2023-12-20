@@ -79,3 +79,18 @@ const positiveSum = numbers
 
 console.log(positiveSum);
 
+// Challenge 3:
+// - Create a new array called 'capitalizedWords' with the words from the 'words' array with the first letter of each word capitalized
+console.log('Challenge 3: capitalized words array');
+const words = ['coder', 'programmer', 'developer'];
+
+const capitalized = words.map(word => 
+  word[0].toUpperCase() + word.slice(1, word.length)
+);
+
+console.log(capitalized);
+
+// Video solution - Challenge 3
+console.log('Video solution - Challenge 3');
+
+// const capitalizedV = word.map();

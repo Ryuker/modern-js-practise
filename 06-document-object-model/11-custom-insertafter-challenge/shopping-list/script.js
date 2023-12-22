@@ -6,7 +6,7 @@
 // My Solution
 function insertAfter(newEl, existingEl) {
   const ul = document.querySelector('ul');
-  const nextSibling = existingEl.nextElementSibling;
+  const nextSibling = existingEl.nextSibling;
   ul.insertBefore(newEl, nextSibling);
 }
 

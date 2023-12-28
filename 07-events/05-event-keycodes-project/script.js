@@ -1,6 +1,7 @@
 // Event Key Codes Project
 const keys = document.querySelectorAll('.key');
 
+// my solution (doesn't work)
 function onKeyPress(e) {
   // console.log('key pressed');
   
@@ -14,6 +15,7 @@ function onKeyPress(e) {
 }
 
 window.addEventListener('keydown', onKeyPress);
+// end my solution
 
 
 // video solution

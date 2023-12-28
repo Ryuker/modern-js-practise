@@ -19,7 +19,7 @@ window.addEventListener('keydown', onKeyPress);
 
 
 // video solution
-// method 1
+// method 1 - compose new div using template string
 // window.addEventListener('keydown', (e) => {
 //   const insert = document.getElementById('insert');
 //   insert.innerHTML = `
@@ -41,7 +41,7 @@ window.addEventListener('keydown', onKeyPress);
 
 // });
 
-// method 2
+// method 2 - compose new div from seperate elements
 window.addEventListener('keydown', (e) => {
   const insert = document.getElementById('insert');
   insert.innerHTML = '';

@@ -51,6 +51,26 @@ function clearItems() {
   checkUI();
 }
 
+function filterItems(e) {
+  // get a the items in the list
+  const items = itemList.querySelectorAll('li');
+
+  // get the text input from the filter
+  const text = e.target.value.toLowerCase();
+  
+  items.forEach(item => {
+    const itemName = item.firstChild.textContent.toLowerCase();
+
+    // filters based on itemName - '-1' means it's not in there
+    if (itemName.indexOf(text) != -1 ) {
+      item.style.display = 'flex';
+    } else {
+      item.style.display = 'none';
+    }
+  });
+}
+
+
 function checkUI() {
   const items = itemList.querySelectorAll('li');
 
@@ -67,13 +87,13 @@ function checkUI() {
 
 }
 
-
 // Event Listeners
 itemForm.addEventListener('submit', addItem);
 
 // add event delegate for each X button
 itemList.addEventListener('click', removeItem);
 clearBtn.addEventListener('click', clearItems);
+itemFilter.addEventListener('input', filterItems);
 
 checkUI();
 

@@ -61,7 +61,8 @@ function filterItems(e) {
   items.forEach(item => {
     const itemName = item.firstChild.textContent.toLowerCase();
 
-    // filters based on itemName - '-1' means it's not in there
+    // filters based on itemName 
+    //- '-1' means the total of chars is not in there
     if (itemName.indexOf(text) != -1 ) {
       item.style.display = 'flex';
     } else {

@@ -37,8 +37,10 @@ function addItem(e) {
 function removeItem(e) {
   // check if the element has remove item as class
   if (e.target.parentElement.classList.contains('remove-item')) {
-    e.target.parentElement.parentElement.remove(); // remove the li
-    checkUI();
+    if(confirm('Are you sure?')) {
+      e.target.parentElement.parentElement.remove(); // remove the li
+      checkUI();
+    }
   }
 }
 
@@ -50,6 +52,7 @@ function clearItems() {
 
 function checkUI() {
   const items = itemList.querySelectorAll('li');
+
   // display if there are items in the list
   if (items.length === 0) {
     // no items in the list - don't display

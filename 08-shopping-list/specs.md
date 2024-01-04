@@ -1,6 +1,6 @@
 # Shopping List Specs
 
-- [ ] Add items to list via form
+- [x] Add items to list via form
 - [ ] Remove items from list by clicking the "X" button
 - [ ] Clear all items with "clear" button
 - [ ] Filter the items by typing in the filter field

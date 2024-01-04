@@ -48,6 +48,7 @@ function clearItems() {
   while (itemList.firstChild) {
     itemList.removeChild(itemList.firstChild);
   } 
+  checkUI();
 }
 
 function checkUI() {

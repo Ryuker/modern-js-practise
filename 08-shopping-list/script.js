@@ -16,8 +16,11 @@ function onAddItemSubmit(e) {
     return;
   }
 
+  // Create item DOM element
   addItemToDOM(newItem);
-  addItemToLocalStorage(newItem);
+
+  // Add item to local storage
+  addItemToStorage(newItem);
 
   // clear the item input value
   itemInput.value = '';
@@ -40,7 +43,20 @@ function addItemToDOM(item) {
 }
 
 function addItemToStorage(item) {
-  localStorage.setItem(item, item);
+  let itemsFromStorage;
+
+  if (localStorage.getItem('items') === null) {
+    itemsFromStorage = [];
+  } else {
+    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+  }
+
+  itemsFromStorage.push(item);
+  
+  // convert to JSON string and set to local storage
+  localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+
+  console.log(localStorage.getItem('items'));
 }
 
 // function removeItemFromLocalStorage(item) {
@@ -62,6 +78,7 @@ function clearItems() {
   while (itemList.firstChild) {
     itemList.removeChild(itemList.firstChild);
   } 
+
   checkUI();
 }
 

@@ -8,6 +8,7 @@ const formBtn = itemForm.querySelector('.btn');
 
 // App state
 let isEditMode = false;
+let selectedItem = '';
 
 getItemsFromStorage();
 
@@ -20,9 +21,21 @@ function displayItems() {
   checkUI();
 }
 
-function onAddItemSubmit(e) {
+function onSubmit(e) {
   e.preventDefault();
 
+  // check if we are in edit mode
+  if (isEditMode){
+    // update the item 
+    console.log('Apps in edit mode, updating item instead');
+    updateItem();
+    setItemToAdd();
+  } else {
+    addItem();
+  }
+}
+
+function addItem(e) {
   const newItem = itemInput.value;
 
   // Validate Input
@@ -57,6 +70,19 @@ function addItemToDOM(item) {
   itemList.prepend(li);
 }
 
+function replaceItemInDOM(item) {
+  const li = document.createElement('li');
+  li.appendChild(document.createTextNode(item));
+
+  // Create button with icon
+  const button = createButton('remove-item btn-link text-red');
+
+  // Nest button in new list item
+  li.append(button);
+  
+  itemList.replaceChild(li, selectedItem);
+}
+
 function addItemToStorage(item) {
   const itemsFromStorage = getItemsFromStorage();
 
@@ -89,6 +115,27 @@ function getItemsFromStorage() {
   return itemsFromStorage;
 }
 
+function replaceItemInStorage(item, itemToReplace) {
+  let itemsFromStorage = getItemsFromStorage();
+  console.log('replace in storage');
+
+  console.log(itemToReplace);
+
+  // Filter out item to be replaced
+  const newItems = itemsFromStorage.map(i => {
+    if (i === itemToReplace.textContent) {
+      console.log(item);
+      return item;
+    } else {
+      return i;
+    }
+  });
+
+  console.log(newItems);
+
+  localStorage.setItem('items', JSON.stringify(newItems));
+}
+
 // function onClickItemFromLocalStorage(item) {
 //   localStorage.onClickItem(item);
 // }
@@ -101,8 +148,6 @@ function onClickItem(e) {
   } else {
     console.log('is edit mode');
     setItemToEdit(e.target);
-
-    updateItem(e.target.textContent);
   }
 
   // check if we clicked on element to specify we want to edit the item
@@ -110,6 +155,9 @@ function onClickItem(e) {
 }
 
 function setItemToEdit(item) {
+  selectedItem = item;
+  console.log(selectedItem);
+
   isEditMode = true;
 
   // reset all li element classes
@@ -128,18 +176,29 @@ function setItemToEdit(item) {
   itemInput.value = item.textContent;
 }
 
-function updateItem(item) {
-  // Set App into edit mode
-  isEditMode = true;
-  console.log('edit mode: ' + isEditMode);
-  // display item value into enter item field
-  
-  // change button text to update item
-  
-    // on button click trigger update item instead
+function setItemToAdd() {
+  selectedItem = '';
+  isEditMode = false;
 
-  // switch app from edit mode to view mode
-   
+  // reset all li element classes
+  itemList.querySelectorAll('li').forEach(item => {
+    item.classList.remove('edit-mode');
+  })
+  
+  // Change button to greend and update icon and text
+  formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
+  formBtn.style = '';
+  
+  // change input field to item content
+  itemInput.value = '';
+}
+
+function updateItem() {
+  const item = itemInput.value;
+
+  replaceItemInStorage(item, selectedItem);
+  replaceItemInDOM(item);
+
   console.log(`Updating ${item}`)
 }
 
@@ -206,7 +265,7 @@ function checkUI() {
 // initialize app
 function init(){
   // Event Listeners
-  itemForm.addEventListener('submit', onAddItemSubmit);
+  itemForm.addEventListener('submit', onSubmit);
 
   // add event delegate for each X button
   itemList.addEventListener('click', onClickItem);

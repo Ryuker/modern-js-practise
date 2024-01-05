@@ -27,7 +27,6 @@ function onSubmit(e) {
   // check if we are in edit mode
   if (isEditMode){
     // update the item 
-    console.log('Apps in edit mode, updating item instead');
     updateItem();
   } else {
     addItem();
@@ -114,21 +113,15 @@ function getItemsFromStorage() {
 
 function replaceItemInStorage(item, itemToReplace) {
   let itemsFromStorage = getItemsFromStorage();
-  console.log('replace in storage');
-
-  console.log(itemToReplace);
 
   // Filter out item to be replaced
   const newItems = itemsFromStorage.map(i => {
     if (i === itemToReplace.textContent) {
-      console.log(item);
       return item;
     } else {
       return i;
     }
   });
-
-  console.log(newItems);
 
   localStorage.setItem('items', JSON.stringify(newItems));
 }
@@ -143,7 +136,6 @@ function onClickItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
   } else {
-    console.log('is edit mode');
     setItemToEdit(e.target);
   }
 
@@ -152,7 +144,6 @@ function onClickItem(e) {
 }
 
 function setItemToEdit(item) {
-  console.log(selectedItem);
 
   isEditMode = true;
 
@@ -192,8 +183,6 @@ function updateItem() {
 
   replaceItemInStorage(item, selectedItem);
   replaceItemInDOM(item);
-
-  console.log(`Updating ${item}`)
 }
 
 function removeItem(item) {

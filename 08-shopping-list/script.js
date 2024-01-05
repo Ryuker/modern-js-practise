@@ -95,6 +95,20 @@ function onClickItem(e) {
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
   }
+
+  // check if we clicked on element to specify we want to edit the item
+  // call update item
+}
+
+function updateItem(item) {
+  // Set App into edit mode
+    // display item value into enter item field
+    // change button text to update item
+    // on button click trigger update item instead
+    
+  // switch app from edit mode to view mode
+   
+  console.log(`Updating ${item}`)
 }
 
 function removeItem(item) {

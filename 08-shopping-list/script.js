@@ -44,6 +44,9 @@ function addItem(e) {
     return;
   }
 
+  // Check if item already exists
+  if (checkIfItemExists(newItem)) return;
+
   // Create item DOM element
   addItemToDOM(newItem);
 
@@ -141,6 +144,11 @@ function onClickItem(e) {
 
   // check if we clicked on element to specify we want to edit the item
   // call update item
+}
+
+function checkIfItemExists(item) {
+  const itemsFromStorage = getItemsFromStorage();
+  return itemsFromStorage.includes(item);
 }
 
 function setItemToEdit(item) {

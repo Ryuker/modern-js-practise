@@ -10,7 +10,7 @@
 - [ ] Deploy to Netlify
 
 
-# Local Storage Explained
+# LocalStorage / session Storage explained
 - Property on the 'Window' interface that allows us to access a Storage Object
 - Data is stored in the browser
 - Data is stored as key/value pairs and values are strings (Can not store objects)

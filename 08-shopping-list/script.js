@@ -88,6 +88,8 @@ function checkUI() {
 
 }
 
+
+
 // Event Listeners
 itemForm.addEventListener('submit', addItem);
 
@@ -97,8 +99,6 @@ clearBtn.addEventListener('click', clearItems);
 itemFilter.addEventListener('input', filterItems);
 
 checkUI();
-
-
 
 
 ////////////////////

@@ -4,6 +4,10 @@ const itemInput = document.getElementById('item-input');
 const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
+const formBtn = itemForm.querySelector('.btn');
+
+// App state
+let isEditMode = false;
 
 getItemsFromStorage();
 
@@ -94,18 +98,46 @@ function onClickItem(e) {
   // check if the element has remove item as class
   if (e.target.parentElement.classList.contains('remove-item')) {
     removeItem(e.target.parentElement.parentElement);
+  } else {
+    console.log('is edit mode');
+    setItemToEdit(e.target);
+
+    updateItem(e.target.textContent);
   }
 
   // check if we clicked on element to specify we want to edit the item
   // call update item
 }
 
+function setItemToEdit(item) {
+  isEditMode = true;
+
+  // reset all li element classes
+  itemList.querySelectorAll('li').forEach(item => {
+    item.classList.remove('edit-mode');
+  })
+
+  // change selected item appearance
+  item.classList.add('edit-mode');
+  
+  // Change button to greend and update icon and text
+  formBtn.innerHTML = '<i class="fa-solid fa-pen"></i> Update item';
+  formBtn.style.backgroundColor = '#228B22';
+  
+  // change input field to item content
+  itemInput.value = item.textContent;
+}
+
 function updateItem(item) {
   // Set App into edit mode
-    // display item value into enter item field
-    // change button text to update item
+  isEditMode = true;
+  console.log('edit mode: ' + isEditMode);
+  // display item value into enter item field
+  
+  // change button text to update item
+  
     // on button click trigger update item instead
-    
+
   // switch app from edit mode to view mode
    
   console.log(`Updating ${item}`)

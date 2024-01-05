@@ -77,14 +77,19 @@ function getItemsFromStorage() {
   return itemsFromStorage;
 }
 
-// function removeItemFromLocalStorage(item) {
-//   localStorage.removeItem(item);
+// function onClickItemFromLocalStorage(item) {
+//   localStorage.onClickItem(item);
 // }
 
-function removeItem(e) {
+function onClickItem(e) {
   // check if the element has remove item as class
   if (e.target.parentElement.classList.contains('remove-item')) {
     if(confirm('Are you sure?')) {
+      // get items from storage
+      let items = getItemsFromStorage();
+
+      console.dir(items);
+
       // console.dir(e.target.parentElement.parentElement.firstChild);
       e.target.parentElement.parentElement.remove(); // remove the li
       checkUI();
@@ -143,7 +148,7 @@ function init(){
   itemForm.addEventListener('submit', onAddItemSubmit);
 
   // add event delegate for each X button
-  itemList.addEventListener('click', removeItem);
+  itemList.addEventListener('click', onClickItem);
   clearBtn.addEventListener('click', clearItems);
   itemFilter.addEventListener('input', filterItems);
 

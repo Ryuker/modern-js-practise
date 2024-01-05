@@ -5,6 +5,8 @@ const itemList = document.getElementById('item-list');
 const clearBtn = document.getElementById('clear');
 const itemFilter = document.getElementById('filter');
 
+getItemsFromStorage();
+
 function onAddItemSubmit(e) {
   e.preventDefault();
 
@@ -43,13 +45,7 @@ function addItemToDOM(item) {
 }
 
 function addItemToStorage(item) {
-  let itemsFromStorage;
-
-  if (localStorage.getItem('items') === null) {
-    itemsFromStorage = [];
-  } else {
-    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
-  }
+  const itemsFromStorage = getItemsFromStorage();
 
   itemsFromStorage.push(item);
   
@@ -57,6 +53,20 @@ function addItemToStorage(item) {
   localStorage.setItem('items', JSON.stringify(itemsFromStorage));
 
   console.log(localStorage.getItem('items'));
+}
+
+function getItemsFromStorage() {
+  let itemsFromStorage;
+
+  if (localStorage.getItem('items') === null) {
+    console.log('Is not in local storage');
+    itemsFromStorage = [];
+  } else  {
+    console.log('Is in local storage');
+    itemsFromStorage = JSON.parse(localStorage.getItem('items'));
+  }
+
+  return itemsFromStorage;
 }
 
 // function removeItemFromLocalStorage(item) {

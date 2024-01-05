@@ -137,20 +137,22 @@ function checkUI() {
 
 }
 
+// initialize app
+function init(){
+  // Event Listeners
+  itemForm.addEventListener('submit', onAddItemSubmit);
 
+  // add event delegate for each X button
+  itemList.addEventListener('click', removeItem);
+  clearBtn.addEventListener('click', clearItems);
+  itemFilter.addEventListener('input', filterItems);
 
-// Event Listeners
-itemForm.addEventListener('submit', onAddItemSubmit);
+  document.addEventListener('DOMContentLoaded', displayItems);
 
-// add event delegate for each X button
-itemList.addEventListener('click', removeItem);
-clearBtn.addEventListener('click', clearItems);
-itemFilter.addEventListener('input', filterItems);
+  checkUI();
+}
 
-document.addEventListener('DOMContentLoaded', displayItems);
-
-checkUI();
-
+init();
 
 ////////////////////
 // Create Functions

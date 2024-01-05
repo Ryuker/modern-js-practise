@@ -39,7 +39,7 @@ function addItemToDOM(item) {
   itemList.prepend(li);
 }
 
-function addItemToLocalStorage(item) {
+function addItemToStorage(item) {
   localStorage.setItem(item, item);
 }
 

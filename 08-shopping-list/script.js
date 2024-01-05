@@ -45,7 +45,11 @@ function addItem(e) {
   }
 
   // Check if item already exists
-  if (checkIfItemExists(newItem)) return;
+  if (checkIfItemExists(newItem)){
+    alert(`${newItem} already exists, fill in a different item.`);
+    return;
+  } 
+
 
   // Create item DOM element
   addItemToDOM(newItem);
@@ -238,7 +242,8 @@ function filterItems(e) {
 
 function resetUI(e) {
   if(e.target.classList.contains('form-control') || e.target.tagName === 'HTML'){
-    checkUI();
+    if (isEditMode === true)
+      checkUI();
   }
 }
 

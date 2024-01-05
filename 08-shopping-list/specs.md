@@ -10,4 +10,12 @@
 - [ ] Deploy to Netlify
 
 
+# Local Storage Explained
+- Property on the 'Window' interface that allows us to access a Storage Object
+- Data is stored in the browser
+- Data is stored as key/value pairs and values are strings (Can not store objects)
+
+localStorage and sessionStorage have the same API. The difference is that localStorage does not expire, while sessionStorage only lasts until the page is closed.
+
+
  

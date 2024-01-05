@@ -29,10 +29,11 @@ function onSubmit(e) {
     // update the item 
     console.log('Apps in edit mode, updating item instead');
     updateItem();
-    setItemToAdd();
   } else {
     addItem();
   }
+
+  checkUI();
 }
 
 function addItem(e) {
@@ -49,10 +50,6 @@ function addItem(e) {
 
   // Add item to local storage
   addItemToStorage(newItem);
-
-  // clear the item input value
-  itemInput.value = '';
-  checkUI();
 }
 
 function addItemToDOM(item) {
@@ -155,7 +152,6 @@ function onClickItem(e) {
 }
 
 function setItemToEdit(item) {
-  selectedItem = item;
   console.log(selectedItem);
 
   isEditMode = true;
@@ -176,7 +172,7 @@ function setItemToEdit(item) {
   itemInput.value = item.textContent;
 }
 
-function setItemToAdd() {
+function setItemToAddMode() {
   selectedItem = '';
   isEditMode = false;
 
@@ -188,12 +184,10 @@ function setItemToAdd() {
   // Change button to greend and update icon and text
   formBtn.innerHTML = '<i class="fa-solid fa-plus"></i> Add Item';
   formBtn.style = '';
-  
-  // change input field to item content
-  itemInput.value = '';
 }
 
 function updateItem() {
+  selectedItem = itemList.querySelector('.edit-mode');
   const item = itemInput.value;
 
   replaceItemInStorage(item, selectedItem);
@@ -245,8 +239,15 @@ function filterItems(e) {
   });
 }
 
+function resetUI(e) {
+  if(e.target.classList.contains('form-control') || e.target.tagName === 'HTML'){
+    checkUI();
+  }
+}
+
 
 function checkUI() {
+  itemInput.value = '';
   const items = itemList.querySelectorAll('li');
 
   // display if there are items in the list
@@ -260,6 +261,7 @@ function checkUI() {
     itemFilter.style.display = 'block';
   }
 
+  setItemToAddMode();
 }
 
 // initialize app
@@ -273,6 +275,9 @@ function init(){
   itemFilter.addEventListener('input', filterItems);
 
   document.addEventListener('DOMContentLoaded', displayItems);
+
+  // handle click outside of button elements to reset UI
+  document.addEventListener('click', resetUI);
 
   checkUI();
 }

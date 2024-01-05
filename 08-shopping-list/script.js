@@ -7,6 +7,7 @@ const itemFilter = document.getElementById('filter');
 
 getItemsFromStorage();
 
+
 function displayItems() {
   const itemsFromStorage = getItemsFromStorage();
   
@@ -59,18 +60,25 @@ function addItemToStorage(item) {
   
   // convert to JSON string and set to local storage
   localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+}
 
-  console.log(localStorage.getItem('items'));
+function removeItemFromStorage(item) {
+  let itemsFromStorage = getItemsFromStorage();
+
+  // Filter out item to be removed
+  itemsFromStorage = itemsFromStorage.filter(i => i !== item);
+
+  // Re-set to localstorage
+  localStorage.setItem('items', JSON.stringify(itemsFromStorage));
+
 }
 
 function getItemsFromStorage() {
   let itemsFromStorage;
 
   if (localStorage.getItem('items') === null) {
-    console.log('Is not in local storage');
     itemsFromStorage = [];
   } else  {
-    console.log('Is in local storage');
     itemsFromStorage = JSON.parse(localStorage.getItem('items'));
   }
 
@@ -82,19 +90,23 @@ function getItemsFromStorage() {
 // }
 
 function onClickItem(e) {
+
   // check if the element has remove item as class
   if (e.target.parentElement.classList.contains('remove-item')) {
+    removeItem(e.target.parentElement.parentElement);
+  }
+}
+
+function removeItem(item) {
     if(confirm('Are you sure?')) {
-      // get items from storage
-      let items = getItemsFromStorage();
+      // Remove item from DOM
+      item.remove(); // remove the li
 
-      console.dir(items);
+      // Remove item from storage
+      removeItemFromStorage(item.textContent);
 
-      // console.dir(e.target.parentElement.parentElement.firstChild);
-      e.target.parentElement.parentElement.remove(); // remove the li
       checkUI();
     }
-  }
 }
 
 function clearItems() {

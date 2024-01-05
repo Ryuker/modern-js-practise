@@ -17,5 +17,12 @@
 
 localStorage and sessionStorage have the same API. The difference is that localStorage does not expire, while sessionStorage only lasts until the page is closed.
 
+## localStorage Methods
+- localStorage.setItem('name', 'Brad')  // Set a value with a key
+- localStorage.getItem('name');         // Get a value using the key
+- localStorage.removeItem('name');      // Remove item using the key
+- localStorage.clear();
+
+
 
  

@@ -17,6 +17,7 @@ function onAddItemSubmit(e) {
   }
 
   addItemToDOM(newItem);
+  addItemToLocalStorage(newItem);
 
   // clear the item input value
   itemInput.value = '';
@@ -38,10 +39,19 @@ function addItemToDOM(item) {
   itemList.prepend(li);
 }
 
+function addItemToLocalStorage(item) {
+  localStorage.setItem(item, item);
+}
+
+// function removeItemFromLocalStorage(item) {
+//   localStorage.removeItem(item);
+// }
+
 function removeItem(e) {
   // check if the element has remove item as class
   if (e.target.parentElement.classList.contains('remove-item')) {
     if(confirm('Are you sure?')) {
+      // console.dir(e.target.parentElement.parentElement.firstChild);
       e.target.parentElement.parentElement.remove(); // remove the li
       checkUI();
     }

@@ -1,4 +1,4 @@
-// Joke Generator Challenge
+// Joke Generator Challenge - my solution
 const jokeEl = document.querySelector('#joke');
 const getJokeBtn = document.querySelector('#joke-btn');
 

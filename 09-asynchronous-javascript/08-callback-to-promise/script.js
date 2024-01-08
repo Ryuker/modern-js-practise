@@ -1,13 +1,4 @@
-// Callbacks
-
-// function toggle(e) {
-//   e.target.classList.toggle('danger');
-// }
-
-// document.querySelector('button').addEventListener('click', toggle);
-
-// Own Example of a callback
-// - callbacks aren't always asynchronous !
+// Callbacks > promise
 
 const posts = [
   {title: 'Post One', body: 'This is post one'},
@@ -16,12 +7,21 @@ const posts = [
 
 console.log(posts);
 
-function createPost(post, cb) {
+function createPost(post) {
   // mimic fetching is from a server (network request which takes time)
-  setTimeout(() => { 
-    posts.push(post);
-    cb();
-  }, 2000);
+  return new Promise((resolve, reject) => {
+    setTimeout(() => { 
+      let error = true;
+
+      if(!error) {
+        posts.push(post);
+        resolve();
+      } else {
+        reject('Error: something went wrong');
+      }
+
+    }, 2000);
+  })
 }
 
 function getPosts() {
@@ -37,7 +37,17 @@ function addPostsToDOM() {
   });
 };
 
-createPost({title: 'Post Three', body: 'This is post three'}, getPosts);
+function showError(error) {
+  const h3 = document.createElement('h3');
+  h3.innerHTML = `<strong>${error}</strong>`;
+  document.querySelector('#posts').appendChild(h3);
+
+}
+
+// get getposts after we created the post
+createPost({ title: 'Post Three', body: 'This is post three' })
+  .then(getPosts)
+  .catch(showError);
 
 
 

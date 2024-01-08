@@ -1,4 +1,23 @@
 // Joke Generator Challenge
-const results = document.querySelector('#results');
+const jokeEl = document.querySelector('#joke');
+const getJokeBtn = document.querySelector('#joke-btn');
 
-console.log(results);
+const xhr = new XMLHttpRequest();
+
+// process the response
+xhr.onreadystatechange = function() {
+  if (this.readyState === 4 && this.status === 200) {
+    data = JSON.parse(this.responseText);
+    jokeEl.innerHTML = data.value;
+  }
+};
+
+// send new request to get the joke
+function getJoke() {
+  xhr.open('GET', 'https://api.chucknorris.io/jokes/random');
+  xhr.send();
+}
+
+document.addEventListener('DOMContentLoaded', getJoke);
+getJokeBtn.addEventListener('click', getJoke);
+

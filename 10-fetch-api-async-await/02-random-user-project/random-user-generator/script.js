@@ -2,9 +2,11 @@
 // api: https://randomuser.me/api
 
 function fetchUser() {
+  showSpinner();
   fetch('https://randomuser.me/api')
   .then(res => res.json())
-  .then(data => { 
+  .then(data => {
+    hideSpinner(); 
     displayUser(data.results[0]);
   });
 }
@@ -42,7 +44,7 @@ function displayUser(user) {
           </p>
           <p class="text-l">
             <span class=font-bold">Location: </span> 
-            ${user.location.city} ${user.location.state} | ${user.location.country} 
+            ${user.location.city} | ${user.location.country} 
           </p>
           <p class="text-xl">
             <span class=font-bold">Age: </span> ${user.dob.age}
@@ -51,6 +53,14 @@ function displayUser(user) {
       </div>
     </div>
   `;
+}
+
+function showSpinner() {
+  document.querySelector('.spinner').style.display = 'block';
+}
+
+function hideSpinner() {
+  document.querySelector('.spinner').style.display = 'none';
 }
 
 document.querySelector('#generate').addEventListener('click', fetchUser);

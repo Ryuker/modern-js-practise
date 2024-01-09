@@ -25,6 +25,11 @@ button {
   border-radius: 5px;
   width: 100px;
   border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background: rgb(161, 79, 69);
 }
 
 input[type='text'] {

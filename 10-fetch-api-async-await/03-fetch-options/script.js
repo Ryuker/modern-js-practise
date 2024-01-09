@@ -14,10 +14,10 @@ function createPost({title, body}) {
     }),
     headers: {
       'Content-Type': 'application/json',
-      token: 'abc123'
-    }
+      token: 'abc123',
+    },
   })
-    .then(res => res.json)
+    .then(res => res.json())
     .then(data => console.log(data));
 };
 

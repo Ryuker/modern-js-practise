@@ -22,9 +22,9 @@ async function displayPopularMovies() {
 
   results.forEach(movie => {
     // create div
+    
     // const div = createCard(movie);
     const div = createCardInnerHTML(movie);
-
     popularMoviesEL.appendChild(div);
 
   });

@@ -13,20 +13,14 @@ const global = { currentPage: window.location.pathname.replace(root, '') } ;
 // Display popular movies
 async function displayPopularMovies() {
   const { results } = await fetchAPIData('/movie/popular');
-  console.log(results);
-  console.log(results[0]);
-
-  const movie = results[0];
 
   const popularMoviesEL = document.getElementById('popular-movies');
 
   results.forEach(movie => {
     // create div
-    
     // const div = createCard(movie);
     const div = createCardInnerHTML(movie);
     popularMoviesEL.appendChild(div);
-
   });
 }
 

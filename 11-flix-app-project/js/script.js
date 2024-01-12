@@ -24,12 +24,23 @@ async function displayPopularMovies() {
   });
 }
 
+// Show Spinner when data is being retrieved
+function showSpinner() {
+  document.querySelector('.spinner').classList.add('show');
+}
+
+function hideSpinner() {
+  document.querySelector('.spinner').classList.remove('show');
+}
+
 // Fetch data from TMDB API
 async function fetchAPIData(endpoint) {
   console.log('Fetching data from API');
+  showSpinner();
   const response = await fetch(`${API_URL}/${endpoint}?api_key=${API_KEY}&language=en-US`);
   const data = await response.json();
   // console.log(data);
+  hideSpinner();
   return data;
 }
 

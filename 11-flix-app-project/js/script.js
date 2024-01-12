@@ -10,7 +10,7 @@ const API_URL = 'https://api.themoviedb.org/3';
 const root = '/11-flix-app-project';
 const global = { currentPage: window.location.pathname.replace(root, '') } ;
 
-// Display popular movies
+// Display 20 most popular movies
 async function displayPopularMovies() {
   const { results } = await fetchAPIData('/movie/popular');
 
@@ -21,6 +21,19 @@ async function displayPopularMovies() {
     // const div = createCard(movie);
     const div = createCardInnerHTML(movie);
     popularMoviesEL.appendChild(div);
+  });
+}
+
+// Display 20 most popular TV shows
+async function displayPopularShows() {
+  const { results } = await fetchAPIData('/tv/popular');
+
+  const popularShowsEL = document.getElementById('popular-shows');
+
+  results.forEach(show => {
+    // create div
+    const div = createShowCardInnerHTML(show);
+    popularShowsEL.appendChild(div);
   });
 }
 
@@ -68,6 +81,7 @@ function init() {
       displayPopularMovies();
       break;
     case `/shows.html`:
+      displayPopularShows();
       console.log('Shows');
       break;
     case `/movie-details.html`:
@@ -88,7 +102,7 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 
-// create a card with inner HTML instead
+// create a movie card with inner HTML instead
 function createCardInnerHTML(movie) {
   const card = document.createElement('div');
   card.classList.add('card');
@@ -113,6 +127,39 @@ function createCardInnerHTML(movie) {
       <h5 class="card-title">${movie.title}</h5>
       <p class="card-text">
         <small class="text-muted">Release: ${movie.release_date}</small>
+      </p>
+    </div>
+  `;
+
+  return card;
+  
+}
+
+// create a show card with inner HTML instead
+function createShowCardInnerHTML(show) {
+  const card = document.createElement('div');
+  card.classList.add('card');
+
+  card.innerHTML = `
+    <a href="tv-details.html?id=${show.id}">
+      ${
+        show.poster_path ? `
+          <img
+            src="https://image.tmdb.org/t/p/w500${show.poster_path}"
+            class="card-img-top"
+            alt="${show.name}"
+          />` : `
+            <img
+            src="images/no-image.jpg"
+            class="card-img-top"
+            alt="${show.name}"
+          />`
+      }
+    </a>
+    <div class="card-body">
+      <h5 class="card-title">${show.name}</h5>
+      <p class="card-text">
+        <small class="text-muted">Air Date: ${show.first_air_date}</small>
       </p>
     </div>
   `;

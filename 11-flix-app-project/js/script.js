@@ -43,8 +43,6 @@ async function displayMovieDetails () {
   const movieId = window.location.search.split('=')[1];
   const movie = await fetchAPIData(`movie/${movieId}`);
 
-  console.dir(movie);
-
   const div = document.createElement('div');
   div.innerHTML = `
     <div class="details-top">
@@ -95,7 +93,7 @@ async function displayMovieDetails () {
         ${movie.production_companies.map(company => `<span>${company.name}</span>`).join(', ')}</div>
     </div>
   `
-
+  // add the div to the movie details element
   document.querySelector('#movie-details').appendChild(div);
 }
 

@@ -239,6 +239,11 @@ async function search() {
 // Display Search Results
 function displaySearchResults(results) {
   const searchResultsEl = document.querySelector('#search-results');
+  
+  // clear previous results
+  searchResultsEl.innerHTML = '';
+  document.querySelector('#search-results-heading').innerHTML = '';
+  document.querySelector('#pagination').innerHTML = '';
 
   results.forEach(result => {
     const div = document.createElement('div');
@@ -276,7 +281,50 @@ function displaySearchResults(results) {
     `;
     searchResultsEl.appendChild(div);
   });
+
+  displayPagination();
 }
+
+// Display Pagination for Search
+function displayPagination() {
+  const paginationEl = document.querySelector('#pagination');
+  const div = document.createElement('div');
+  div.classList.add('pagination');
+  div.innerHTML = `
+    <button class="btn btn-primary" id="prev">Prev</button>
+    <button class="btn btn-primary" id="next">Next</button>
+    <div class="page-counter">Page ${global.search.page} of ${global.search.totalPages}</div>
+  `;
+
+  paginationEl.appendChild(div);
+
+  console.log(global.search.page);
+  // Disable prev button if on first page
+  if (global.search.page === 1) {
+    paginationEl.querySelector('#prev').disabled = true;
+  } else if (global.search.page === global.search.totalPages) {
+    console.log(paginationEl.querySelectorAll('#next'))
+    paginationEl.querySelector('#next').disabled = true;
+  }
+
+  //  Next Page
+  paginationEl.querySelector('#next').addEventListener('click', 
+    async () => {
+      global.search.page++;
+      const { results } = await searchAPIData();
+      displaySearchResults(results);
+  });
+
+  // Prev Page
+  paginationEl.querySelector('#prev').addEventListener('click', 
+    async () => {
+      global.search.page--;
+      const { results } = await searchAPIData();
+      displaySearchResults(results);
+  });
+}
+
+
 
 // Display Slider Movies
 async function displaySlider() {
@@ -362,7 +410,7 @@ async function fetchAPIData(endpoint) {
 async function searchAPIData() {
   console.log('Fetching search data from API');
   showSpinner();
-  const response = await fetch(`${API_URL}/search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}`);
+  const response = await fetch(`${API_URL}/search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}&page=${global.search.page}`);
   const data = await response.json();
   // console.log(data);
   hideSpinner();

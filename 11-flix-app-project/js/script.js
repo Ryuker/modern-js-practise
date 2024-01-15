@@ -14,7 +14,8 @@ const global = {
     term: '',
     type: '',
     page: 1,
-    totalPages: 1
+    totalPages: 1,
+    totalResults: 0
   }
 } ;
 
@@ -211,8 +212,12 @@ async function search() {
 
   if (global.search.term !== '' && global.search.term !== null){
     // @todo = make request 
-    const { results, totalPages, page } = await searchAPIData();
+    const { results, total_pages, page, total_results } = await searchAPIData();
     console.log(results);
+
+    global.search.page = page;
+    global.search.totalPages = total_pages;
+    global.search.totalResults = total_results;
 
     if (results.length === 0) {
       showAlert('No results found');
@@ -263,6 +268,11 @@ function displaySearchResults(results) {
           <small class="text-muted">Release: ${global.search.type === 'movie' ? result.release_date : result.first_air_date}</small>
         </p>
       </div>
+    `;
+
+    // Search Results heading to display total results
+    document.querySelector('#search-results-heading').innerHTML = `
+      <h2>${results.length} of ${global.search.totalResults} Results for ${global.search.term}</h2>
     `;
     searchResultsEl.appendChild(div);
   });

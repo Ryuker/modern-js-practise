@@ -8,7 +8,15 @@ const API_URL = 'https://api.themoviedb.org/3';
 
 // Page Router
 const root = '/11-flix-app-project';
-const global = { currentPage: window.location.pathname.replace(root, '') } ;
+const global = { 
+  currentPage: window.location.pathname.replace(root, ''),
+  search: {
+    term: '',
+    type: '',
+    page: 1,
+    totalPages: 1
+  }
+} ;
 
 // Display 20 most popular movies
 async function displayPopularMovies() {
@@ -192,6 +200,28 @@ function displayBackgroundImage(type, backgroundPath) {
   // console.dir(overlayDiv);
 }
 
+// Search Movies / Shows
+async function search() {
+  console.log('search');
+  const queryStr = window.location.search;
+  const urlParams = new URLSearchParams(queryStr);
+  
+  global.search.type = urlParams.get('type');
+  global.search.term = urlParams.get('search-term');
+
+  if (global.search.term !== '' && global.search.term !== null){
+    // @todo = make request 
+    const results = await searchAPIData();
+    // console.log(results);
+    // and display results
+  } else {
+    showAlert('Please enter a search term.');
+  }
+
+  console.log(queryStr);
+  console.log(urlParams.get('type'));
+}
+
 // Display Slider Movies
 async function displaySlider() {
   const { results } = await fetchAPIData('movie/now_playing');
@@ -272,6 +302,17 @@ async function fetchAPIData(endpoint) {
   return data;
 }
 
+// Make request to search
+async function searchAPIData() {
+  console.log('Fetching search data from API');
+  showSpinner();
+  const response = await fetch(`${API_URL}/search/${global.search.type}?api_key=${API_KEY}&language=en-US&query=${global.search.term}`);
+  const data = await response.json();
+  // console.log(data);
+  hideSpinner();
+  return data;
+}
+
 // Highlight active link
 function highlightActiveLink() {
   const links = document.querySelectorAll('.nav-link');
@@ -286,6 +327,16 @@ function highlightActiveLink() {
     }
   });
 } 
+
+// Show Aler
+function showAlert(message, className) {
+  const alertEl = document.createElement('div');
+  alertEl.classList.add('alert', className);
+  alertEl.appendChild(document.createTextNode(message));
+  document.querySelector('#alert').appendChild(alertEl);
+
+  setTimeout(() => {alertEl.remove()}, 3000);
+}
 
 // Init App
 function init() {
@@ -310,6 +361,7 @@ function init() {
       break;
     case `/search.html`:
       console.log('Search');
+      search();
       break;
   }
 

@@ -121,6 +121,7 @@ function clock() {
   requestAnimationFrame(clock);
 }
 
+
 function saveAsImage() {
   const dataURL = canvas.toDataURL('img/png');
   const link = document.createElement('a');

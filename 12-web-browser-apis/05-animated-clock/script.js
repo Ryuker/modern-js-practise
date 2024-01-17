@@ -1,4 +1,6 @@
 // Animated Clock using Canvas
+
+// Draw and Style code to draw the clock
 function clock() {
   const now = new Date();
   const canvas = document.getElementById('canvas');
@@ -58,7 +60,7 @@ function clock() {
   const min = now.getMinutes();
   const sec = now.getSeconds();
 
-  console.log(`${hr}:${min}:${sec}`);
+  // console.log(`${hr}:${min}:${sec}`);
 
   // Draw hour hand
   ctx.save();
@@ -102,6 +104,10 @@ function clock() {
   ctx.restore();
 
   ctx.restore(); // restore the default state
+  
+  // recursive call of clock to draw again on the next frame
+  requestAnimationFrame(clock);
 }
 
-clock();
+// Draw the clock
+requestAnimationFrame(clock);

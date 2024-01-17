@@ -7,11 +7,12 @@ const numberLinesColor = document.getElementById('line-color');
 const largeHandColor = document.getElementById('large-hand-color');
 const secondHandColor = document.getElementById('second-hand-color');
 
+const canvas = document.getElementById('canvas');
+
 
 // Draw and Style code to draw the clock
 function clock() {
   const now = new Date();
-  const canvas = document.getElementById('canvas');
   const ctx = canvas.getContext('2d');
 
   // Setup canvas
@@ -21,8 +22,8 @@ function clock() {
   ctx.rotate(-Math.PI / 2);       // rotate the clock -90deg 
   
   // Set default styles
-  ctx.strokeStyle = numberLinesColor.value;
-  ctx.fillStyle = faceColor.value;
+  ctx.strokeStyle = '#000000';
+  ctx.fillStyle = '#f4f4f4';
   ctx.lineWidth = 5;
   ctx.lineCap = 'round';
 
@@ -32,6 +33,7 @@ function clock() {
   ctx.beginPath();
   ctx.lineWidth = 14;
   ctx.strokeStyle = borderColor.value;
+  ctx.fillStyle = faceColor.value;
   ctx.arc(0, 0, 142, 0, Math.PI * 2, true);
   ctx.stroke();
   ctx.fill();
@@ -39,6 +41,7 @@ function clock() {
 
   // Draw hour lines
   ctx.save();
+  ctx.strokeStyle = numberLinesColor.value;
   for (let i = 0; i < 12; i++) {
     ctx.beginPath();
     ctx.rotate(Math.PI / 6);
@@ -50,6 +53,7 @@ function clock() {
 
   // Draw minute lines
   ctx.save();
+  ctx.strokeStyle = numberLinesColor.value;
   ctx.lineWidth = 4;
   for (let i = 0; i < 60; i++) {
     if (i  % 5 !== 0) {     // only draw when the remainder isn't 0 
@@ -118,12 +122,14 @@ function clock() {
 }
 
 function saveAsImage() {
-  e.preventDefault();
-  console.log('saving as image');
-  // console.log(e);
+  const dataURL = canvas.toDataURL('img/png');
+  const link = document.createElement('a');
+  link.download = 'clock.png';
+  link.href = dataURL;
+  link.click();
 }
 
 // Draw the clock
 requestAnimationFrame(clock);
 
-document.querySelector('#save-btn').addEventListener('submit', saveAsImage );
+document.getElementById('save-btn').addEventListener('click', saveAsImage );

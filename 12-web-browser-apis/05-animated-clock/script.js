@@ -1,4 +1,4 @@
-// Animated Clock using Canvas
+// Animated Clock 2 using Canvas
 
 // Draw and Style code to draw the clock
 function clock() {

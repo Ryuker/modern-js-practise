@@ -7,7 +7,7 @@ function clock() {
   // Setup canvas
   ctx.save();                     // Save the default state 
   ctx.clearRect(0, 0, 500, 500); 
-  ctx.translate(250, 250);
+  ctx.translate(250, 250);        // put 0,0 in the middle
   ctx.rotate(-Math.PI / 2);       // rotate the clock -90deg 
   
   // Set default styles
@@ -26,6 +26,34 @@ function clock() {
   ctx.stroke();
   ctx.fill();
   ctx.restore();
+
+  // Draw hour lines
+  ctx.save();
+  for (let i = 0; i < 12; i++) {
+    ctx.beginPath();
+    ctx.rotate(Math.PI / 6);
+    ctx.moveTo(100,0);
+    ctx.lineTo(120,0);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  // Draw minute lines
+  ctx.save();
+  ctx.lineWidth = 4;
+  for (let i = 0; i < 60; i++) {
+    if (i  % 5 !== 0) {     // only draw when it's not a multiple of 5 
+      ctx.beginPath();
+      
+      ctx.moveTo(117,0);
+      ctx.lineTo(120,0);
+      ctx.stroke();
+    }
+    ctx.rotate(Math.PI / 30);
+  }
+  ctx.restore();
+
+  
 
   ctx.restore(); // restore the default state
 }

@@ -42,7 +42,7 @@ function clock() {
   ctx.save();
   ctx.lineWidth = 4;
   for (let i = 0; i < 60; i++) {
-    if (i  % 5 !== 0) {     // only draw when it's not a multiple of 5 
+    if (i  % 5 !== 0) {     // only draw when the remainder isn't 0 
       ctx.beginPath();
       
       ctx.moveTo(117,0);
@@ -53,7 +53,15 @@ function clock() {
   }
   ctx.restore();
 
-  
+  // Get current time
+  const hr = now.getHours() % 12;
+  const min = now.getMinutes();
+  const sec = now.getSeconds();
+
+  console.log(`${hr}:${min}:${sec}`);
+
+  // Draw hour hand
+
 
   ctx.restore(); // restore the default state
 }

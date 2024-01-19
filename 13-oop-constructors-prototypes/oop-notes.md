@@ -51,5 +51,18 @@ There are many ways to create objects in JS. We have object literals, constructo
 - **Classes**: Another way to create a blueprint. "Synthatic Sugar" in JS, but part of many other languages
 - **Instances**: Objects are "instantiated" using the blueprint (Constructor or Class)
 
+# 4 Principles Of OOP
+## 1. Abstraction
+Hiding all but the relevant parts of an object in order to reduce complexity and increase efficiency.
+
+## 2. Encapsulation
+The process of wrapping up data and methods into a unit such as a class or a function. Encapsulation usually includes some kinds of "data hiding"
+
+## 3. Inheritance
+The process of inheriting the properties and methods from a parent class or constructor
+
+## 4. Polymorphism
+The process of inheriting the properties and methods from a parent class or constructor. Examples is using the same methods but they execute something differen per child class.
+
 
 

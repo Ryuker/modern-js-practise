@@ -18,3 +18,38 @@ Focus on Constructors and Prototypes
 13. Flags & descriptors
 14. Sealing & freezing
 
+# What is OOP?
+OOP/Object Oriented Programming is a programming paradigm or a way of thinking about and structuring code. It is a specific style to implement certain principles.
+
+There are other paradigms such as procedural, functional and logic. OOP is extremely common in many different languages.
+
+# What is an Object?
+'Self-contained' piece of code that is collection of methods and properties. 
+Objects are used as building blocks and can interact with one another.
+
+There are many ways to create objects in JS. We have object literals, constructor functions, classes, factories and more.
+
+## Examples of Common Objects
+|  |  |
+| :--- | :--- |
+| User | Cart |
+| Post | Customer |
+| Comment | Employee |
+| UI Component | Message |
+| Product | Book |
+| Order | Item |
+
+# Why Use OOP
+- Can make your code easier to read and understand
+- Prevents spaghetti code
+- Flexible and allows you to build complex applications
+- NOT always needed. OOP can be overkill for smaller projects. It's great for more complex projects, especially if working on a team.
+
+# Components of OOP
+- **Constructor Functions (JS)**: Creates a blueprint for an object
+- **Prototypes (JS)**: A way for objects to inherit properties and methods from one another
+- **Classes**: Another way to create a blueprint. "Synthatic Sugar" in JS, but part of many other languages
+- **Instances**: Objects are "instantiated" using the blueprint (Constructor or Class)
+
+
+

@@ -1,0 +1,1 @@
+// Getters and Setter with define property and inheritance

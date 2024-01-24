@@ -51,4 +51,4 @@ wallet.withdraw(50);
 wallet.withdraw(500);
 
 console.log(wallet.balance, 'Balance');
-console.log(wallet.transactions)
+console.log(wallet.transactions);

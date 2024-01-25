@@ -80,8 +80,10 @@ class CalorieTracker {
     console.log('Removing meal');
   }
 
-  addWorkout() {
+  addWorkout(workout) {
     console.log('Adding workout');
+    this._workouts.push(workout);
+    this._totalCalories -= workout.calories;
   }
 
   removeWorkout() {

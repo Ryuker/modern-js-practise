@@ -52,9 +52,9 @@ class Meal {
 // Workout
 class Workout {
   constructor(name, calories) {
-    this._id = Math.random().toString(16).slice(2);
-    this._name = name;
-    this._calories = calories;
+    this.id = Math.random().toString(16).slice(2);
+    this.name = name;
+    this.calories = calories;
   }
 }
 
@@ -190,4 +190,20 @@ class Storage{
     console.log('Clearing all');
   }
 }
+
+
+// Initialization
+const tracker = new CalorieTracker();
+
+const breakfast = new Meal('Breakfast', 400);
+tracker.addMeal(breakfast);
+console.log(tracker._totalCalories, 'total calories');
+
+const run = new Workout('Morning Run', 300);
+tracker.addWorkout(run);
+console.log(tracker._totalCalories, 'total calories');
+
+console.log(tracker);
+console.log(tracker._meals);
+console.log(tracker._workouts);
 

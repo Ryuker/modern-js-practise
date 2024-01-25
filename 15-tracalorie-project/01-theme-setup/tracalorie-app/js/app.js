@@ -63,10 +63,10 @@ class Workout {
 // Calorie Tracker
 class CalorieTracker {
   constructor() {
-    this._calorieLimit;
-    this._totalCalories;
-    this._meals;
-    this._workouts;
+    this._calorieLimit = 2000;
+    this._totalCalories = 0;
+    this._meals = [];
+    this._workouts = [];
   }
 
   // Public methods

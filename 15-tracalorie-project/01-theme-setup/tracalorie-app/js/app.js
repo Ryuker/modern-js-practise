@@ -68,7 +68,9 @@ class CalorieTracker {
     this._meals = [];
     this._workouts = [];
 
+    this._displayCalorieLimit();
     this._displayCaloriesTotal();
+    
   }
 
   // Public methods/API
@@ -119,6 +121,8 @@ class CalorieTracker {
 
   _displayCalorieLimit() {
     console.log('displaying calorie limit')
+    const calorieLimitEl = document.getElementById('calories-limit');
+    calorieLimitEl.textContent = this._calorieLimit;
   }
 
   _displayCaloriesConsumed() {
@@ -206,7 +210,9 @@ class Storage{
 const tracker = new CalorieTracker();
 
 const breakfast = new Meal('Breakfast', 400);
+const lunch = new Meal('Lunch', 350);
 tracker.addMeal(breakfast);
+tracker.addMeal(lunch);
 console.log(tracker._totalCalories, 'total calories');
 
 const run = new Workout('Morning Run', 300);

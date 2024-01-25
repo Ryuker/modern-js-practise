@@ -73,6 +73,7 @@ class CalorieTracker {
     
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
+    this._displayCaloriesRemaining();
   }
 
   // Public methods/API
@@ -115,6 +116,7 @@ class CalorieTracker {
     this._displayCaloriesTotal();
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
+    this._displayCaloriesRemaining();
   }
 
   _displayCaloriesTotal() {
@@ -139,14 +141,17 @@ class CalorieTracker {
   _displayCaloriesBurned() {
     console.log('display calories burned')
     const caloriesBurnedEl = document.getElementById('calories-burned');
-    console.log(caloriesBurnedEl);
     const burned = this._workouts.reduce((total, workout) => total + workout.calories, 0);
     caloriesBurnedEl.textContent = burned;
-    console.log(caloriesBurnedEl);
+
   }
 
   _displayCaloriesRemaining() {
     console.log('display calories remaining')
+    const caloriesRemainingEl = document.getElementById('calories-remaining');
+    const remaining = this._calorieLimit - this._totalCalories;
+    console.log(remaining);
+    caloriesRemainingEl.textContent = remaining;
   }
 
   _displayNewMeal() {

@@ -43,9 +43,9 @@ class App {
 // Meal
 class Meal {
   constructor() {
-    this._id;
-    this._name;
-    this._calories;
+    this.id;
+    this.name;
+    this.calories;
   }
 }
 

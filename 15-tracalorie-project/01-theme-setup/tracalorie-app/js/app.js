@@ -67,13 +67,16 @@ class CalorieTracker {
     this._totalCalories = 0;
     this._meals = [];
     this._workouts = [];
+
+    this._displayCaloriesTotal();
   }
 
-  // Public methods
+  // Public methods/API
   addMeal(meal) {
     console.log('Adding meal');
     this._meals.push(meal);
-    this._totalCalories += meal.calories;    
+    this._totalCalories += meal.calories;
+    this._render();    
   }
 
   removeMeal() {
@@ -84,6 +87,7 @@ class CalorieTracker {
     console.log('Adding workout');
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
+    this._render();
   }
 
   removeWorkout() {
@@ -103,12 +107,18 @@ class CalorieTracker {
   }
 
   // Private methods
-  _displayCaloriesTotoal() {
-    console.log('displaying calories total')
+  _render() {
+    this._displayCaloriesTotal();
   }
 
-  _displayCaloryLimit() {
-    console.log('displaying calory limit')
+  _displayCaloriesTotal() {
+    console.log('displaying calories total')
+    const totalCaloriesEl = document.getElementById('calories-total');
+    totalCaloriesEl.textContent = this._totalCalories;
+  }
+
+  _displayCalorieLimit() {
+    console.log('displaying calorie limit')
   }
 
   _displayCaloriesConsumed() {

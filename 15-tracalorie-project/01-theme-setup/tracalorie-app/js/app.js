@@ -71,6 +71,8 @@ class CalorieTracker {
     this._displayCalorieLimit();
     this._displayCaloriesTotal();
     
+    this._displayCaloriesConsumed();
+    this._displayCaloriesBurned();
   }
 
   // Public methods/API
@@ -78,7 +80,7 @@ class CalorieTracker {
     console.log('Adding meal');
     this._meals.push(meal);
     this._totalCalories += meal.calories;
-    this._render();    
+    this._renderStats();    
   }
 
   removeMeal() {
@@ -89,7 +91,7 @@ class CalorieTracker {
     console.log('Adding workout');
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
-    this._render();
+    this._renderStats();
   }
 
   removeWorkout() {
@@ -109,8 +111,10 @@ class CalorieTracker {
   }
 
   // Private methods
-  _render() {
+  _renderStats() {
     this._displayCaloriesTotal();
+    this._displayCaloriesConsumed();
+    this._displayCaloriesBurned();
   }
 
   _displayCaloriesTotal() {
@@ -127,14 +131,18 @@ class CalorieTracker {
 
   _displayCaloriesConsumed() {
     console.log('display calories consumed')
+    const caloriesConsumedEl = document.getElementById('calories-consumed');
+    const consumed = this._meals.reduce((total, meal) => total + meal.calories, 0);
+    caloriesConsumedEl.textContent = consumed;
   }
 
   _displayCaloriesBurned() {
     console.log('display calories burned')
-  }
-
-  _displayCaloriesBurned() {
-    console.log('display calories burned')
+    const caloriesBurnedEl = document.getElementById('calories-burned');
+    console.log(caloriesBurnedEl);
+    const burned = this._workouts.reduce((total, workout) => total + workout.calories, 0);
+    caloriesBurnedEl.textContent = burned;
+    console.log(caloriesBurnedEl);
   }
 
   _displayCaloriesRemaining() {
@@ -147,10 +155,6 @@ class CalorieTracker {
 
   _displayNewWorkout() {
     console.log('display new workout')
-  }
-
-  _renderStats() {
-    console.log('Rendering stats')
   }
 }
 
@@ -215,7 +219,7 @@ tracker.addMeal(breakfast);
 tracker.addMeal(lunch);
 console.log(tracker._totalCalories, 'total calories');
 
-const run = new Workout('Morning Run', 300);
+const run = new Workout('Morning Run', 320);
 tracker.addWorkout(run);
 console.log(tracker._totalCalories, 'total calories');
 

@@ -70,8 +70,10 @@ class CalorieTracker {
   }
 
   // Public methods
-  addMeal() {
+  addMeal(meal) {
     console.log('Adding meal');
+    this._meals.push(meal);
+    this._totalCalories += meal.calories;    
   }
 
   removeMeal() {

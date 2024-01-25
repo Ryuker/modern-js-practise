@@ -42,19 +42,19 @@ class App {
 
 // Meal
 class Meal {
-  constructor() {
-    this.id;
-    this.name;
-    this.calories;
+  constructor(name, calories) {
+    this.id = Math.random().toString(16).slice(2);
+    this.name = name;
+    this.calories = calories;
   }
 }
 
 // Workout
 class Workout {
-  constructor() {
-    this._id;
-    this._name;
-    this._calories;
+  constructor(name, calories) {
+    this._id = Math.random().toString(16).slice(2);
+    this._name = name;
+    this._calories = calories;
   }
 }
 

@@ -3,7 +3,7 @@
 // The App
 class App {
   constructor() {
-
+    this.tracker = new CalorieTracker();
   }
 
   _newItem() {

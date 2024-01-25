@@ -150,6 +150,8 @@ class CalorieTracker {
     console.log('display calories remaining')
     const caloriesRemainingEl = document.getElementById('calories-remaining');
     const remaining = this._calorieLimit - this._totalCalories;
+    console.log(this._totalCalories, 'total');
+    console.log(this._calorieLimit, 'limit');
     console.log(remaining);
     caloriesRemainingEl.textContent = remaining;
   }
@@ -218,7 +220,7 @@ class Storage{
 // Initialization
 const tracker = new CalorieTracker();
 
-const breakfast = new Meal('Breakfast', 400);
+const breakfast = new Meal('Breakfast', 200);
 const lunch = new Meal('Lunch', 350);
 tracker.addMeal(breakfast);
 tracker.addMeal(lunch);

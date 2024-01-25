@@ -8,10 +8,22 @@ class App {
 
   _newItem() {
     console.log('new item called');
+    
+    // Add Meal
+    this.tracker.addMeal();
+
+    // Add workout
+    this.tracker.addWorkout();
   }
 
   _removeItem() {
     console.log('remove item called');
+    
+    // Remove meal
+    this.tracker.removeMeal();
+
+    // Remove workout
+    this.tracker.removeWorkout();
   }
   
   _filterItems() {
@@ -20,6 +32,7 @@ class App {
   
   _reset() {
     console.log('reset called');
+    this.tracker.resetDay();
   }
 
   _setLimit() {
@@ -50,10 +63,10 @@ class Workout {
 // Calorie Tracker
 class CalorieTracker {
   constructor() {
-    _calorieLimit;
-    _totalCalories;
-    _meals;
-    _workouts;
+    this._calorieLimit;
+    this._totalCalories;
+    this._meals;
+    this._workouts;
   }
 
   // Public methods
@@ -75,6 +88,14 @@ class CalorieTracker {
 
   resetDay() {
     console.log('Resetting day');
+  }
+
+  setLimit() {
+    console.log('Setting limit');
+  }
+
+  loadItems() {
+    console.log('Loading items');
   }
 
   // Private methods
@@ -100,6 +121,18 @@ class CalorieTracker {
 
   _displayCaloriesRemaining() {
     console.log('display calories remaining')
+  }
+
+  _displayNewMeal() {
+    console.log('display new meal')
+  }
+
+  _displayNewWorkout() {
+    console.log('display new workout')
+  }
+
+  _renderStats() {
+    console.log('Rendering stats')
   }
 }
 
@@ -147,6 +180,10 @@ class Storage{
 
   static getWorkouts() {
     console.log('Getting workouts');
+  }
+
+  static clearAll() {
+    console.log('Clearing all');
   }
 }
 

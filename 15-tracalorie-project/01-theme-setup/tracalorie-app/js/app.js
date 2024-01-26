@@ -46,6 +46,12 @@ class App {
     // reset the name and calories field to nothing
     name.value = '';
     calories.value = '';
+
+    // Collapse the bootstrap element
+    const collapseMeal  = document.getElementById('collapse-meal');
+    const bdCollapse = new bootstrap.Collapse(collapseMeal, {
+      toggle: true
+    });
   }
 
   _newWorkOut(e) {
@@ -85,6 +91,12 @@ class App {
     // reset the name and calories field to nothing
     name.value = '';
     calories.value = '';
+
+    // Collapse the bootstrap element
+    const collapseWorkout  = document.getElementById('workout-meal');
+    const bdCollapse = new bootstrap.Collapse(collapseWorkout, {
+      toggle: true
+    });
   }
 
   _newItem() {

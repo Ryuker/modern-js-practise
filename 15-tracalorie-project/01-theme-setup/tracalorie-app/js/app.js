@@ -74,6 +74,7 @@ class CalorieTracker {
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
+    this._displayCaloriesProgress();
   }
 
   // Public methods/API
@@ -117,6 +118,7 @@ class CalorieTracker {
     this._displayCaloriesConsumed();
     this._displayCaloriesBurned();
     this._displayCaloriesRemaining();
+    this._displayCaloriesProgress();
   }
 
   _displayCaloriesTotal() {
@@ -154,6 +156,14 @@ class CalorieTracker {
     console.log(this._calorieLimit, 'limit');
     console.log(remaining);
     caloriesRemainingEl.textContent = remaining;
+  }
+
+  _displayCaloriesProgress() {
+    const progressEl = document.getElementById('calorie-progress');
+    const percentage = (this._totalCalories / this._calorieLimit) * 100;
+    console.log(percentage, 'percentage');
+    const width = Math.min(percentage, 100);
+    progressEl.style.width = `${width}%`;
   }
 
   _displayNewMeal() {

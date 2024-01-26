@@ -3,27 +3,108 @@
 // The App
 class App {
   constructor() {
-    this.tracker = new CalorieTracker();
+    this._tracker = new CalorieTracker();
+
+    document.getElementById('meal-form').addEventListener('submit', this._newMeal.bind(this));
+    document.getElementById('workout-form').addEventListener('submit', this._newWorkOut.bind(this));
+  }
+
+  _newMeal(e) {
+    e.preventDefault();
+    const name = document.getElementById('meal-name');
+    const calories = document.getElementById('meal-calories');
+
+    // Validate inputs
+    if (name.value === '' || calories.value === '' ){
+      alert('Please fill in all fields');
+      return;
+    }
+
+    // Create a new meal
+    const meal = new Meal(name.value, +calories.value);
+    this._tracker.addMeal(meal);
+
+    // Display Meal in meal items div
+    const mealCard = document.createElement('div');
+    mealCard.className = `card my-2`;
+    mealCard.innerHTML = `
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="mx-1">${name.value}</h4>
+          <div class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5">
+            ${calories.value}
+          </div>
+          <button class="delete btn btn-danger btn-sm mx-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    const mealItemsEl = document.getElementById('meal-items');
+    mealItemsEl.appendChild(mealCard);
+
+    // reset the name and calories field to nothing
+    name.value = '';
+    calories.value = '';
+  }
+
+  _newWorkOut(e) {
+    e.preventDefault();
+    const name = document.getElementById('workout-name');
+    const calories = document.getElementById('workout-calories');
+
+    // Validate inputs
+    if (name.value === '' || calories.value === '' ){
+      alert('Please fill in all fields');
+      return;
+    }
+
+    // Create a new meal
+    const workout = new Workout(name.value, +calories.value);
+    this._tracker.addMeal(workout);
+
+    // Display Meal in meal items div
+    const workoutCard = document.createElement('div');
+    workoutCard.className = `card my-2`;
+    workoutCard.innerHTML = `
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="mx-1">${name.value}</h4>
+          <div class="fs-1 bg-secondary text-white text-center rounded-2 px-2 px-sm-5">
+            ${calories.value}
+          </div>
+          <button class="delete btn btn-danger btn-sm mx-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    const workoutItemsEl = document.getElementById('workout-items');
+    workoutItemsEl.appendChild(workoutCard);
+
+    // reset the name and calories field to nothing
+    name.value = '';
+    calories.value = '';
   }
 
   _newItem() {
     console.log('new item called');
     
     // Add Meal
-    this.tracker.addMeal();
+    this._tracker.addMeal();
 
     // Add workout
-    this.tracker.addWorkout();
+    this._tracker.addWorkout();
   }
 
   _removeItem() {
     console.log('remove item called');
     
     // Remove meal
-    this.tracker.removeMeal();
+    this._tracker.removeMeal();
 
     // Remove workout
-    this.tracker.removeWorkout();
+    this._tracker.removeWorkout();
   }
   
   _filterItems() {
@@ -32,7 +113,7 @@ class App {
   
   _reset() {
     console.log('reset called');
-    this.tracker.resetDay();
+    this._tracker.resetDay();
   }
 
   _setLimit() {
@@ -243,19 +324,21 @@ class Storage{
 
 
 // Initialization
-const tracker = new CalorieTracker();
+const app = new App();
 
-const breakfast = new Meal('Breakfast', 200);
-const lunch = new Meal('Lunch', 1050);
-tracker.addMeal(breakfast);
-tracker.addMeal(lunch);
-console.log(tracker._totalCalories, 'total calories');
+// const tracker = new CalorieTracker();
 
-const run = new Workout('Morning Run', 320);
-tracker.addWorkout(run);
-console.log(tracker._totalCalories, 'total calories');
+// const breakfast = new Meal('Breakfast', 200);
+// const lunch = new Meal('Lunch', 1050);
+// tracker.addMeal(breakfast);
+// tracker.addMeal(lunch);
+// console.log(tracker._totalCalories, 'total calories');
 
-console.log(tracker);
-console.log(tracker._meals);
-console.log(tracker._workouts);
+// const run = new Workout('Morning Run', 320);
+// tracker.addWorkout(run);
+// console.log(tracker._totalCalories, 'total calories');
+
+// console.log(tracker);
+// console.log(tracker._meals);
+// console.log(tracker._workouts);
 

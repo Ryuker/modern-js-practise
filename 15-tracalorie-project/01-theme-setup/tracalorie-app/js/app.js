@@ -152,10 +152,25 @@ class CalorieTracker {
     console.log('display calories remaining')
     const caloriesRemainingEl = document.getElementById('calories-remaining');
     const remaining = this._calorieLimit - this._totalCalories;
-    console.log(this._totalCalories, 'total');
-    console.log(this._calorieLimit, 'limit');
-    console.log(remaining);
     caloriesRemainingEl.textContent = remaining;
+
+    // color red if calories is in danger zone
+    const progressEl = document.getElementById('calorie-progress');
+
+    if (remaining <= 0) {
+      caloriesRemainingEl.parentElement.parentElement.classList.remove('bg-light');
+      caloriesRemainingEl.parentElement.parentElement.classList.add('bg-danger');
+      
+      progressEl.classList.remove('bg-succes');
+      progressEl.classList.add('bg-danger');
+    } else {
+      caloriesRemainingEl.parentElement.parentElement.classList.remove('bg-danger');
+      caloriesRemainingEl.parentElement.parentElement.classList.add('bg-light');
+
+      progressEl.classList.remove('bg-danger');
+      progressEl.classList.add('bg-succes');
+      
+    }
   }
 
   _displayCaloriesProgress() {
@@ -231,7 +246,7 @@ class Storage{
 const tracker = new CalorieTracker();
 
 const breakfast = new Meal('Breakfast', 200);
-const lunch = new Meal('Lunch', 350);
+const lunch = new Meal('Lunch', 1050);
 tracker.addMeal(breakfast);
 tracker.addMeal(lunch);
 console.log(tracker._totalCalories, 'total calories');

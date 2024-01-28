@@ -213,7 +213,8 @@ class CalorieTracker {
     console.log('display new meal')
     // Display item in respective items div
     const mealCard = document.createElement('div');
-    mealCard.className = `card my-2`;
+    mealCard.classList.add('card', 'my-2');
+    mealCard.setAttribute('data-id', meal.id);
     mealCard.innerHTML = `
       <div class="card-body">
         <div class="d-flex align-items-center justify-content-between">
@@ -227,15 +228,17 @@ class CalorieTracker {
         </div>
       </div>
     `;
-    const mealItemsEl = document.getElementById(`meal-items`);
-    mealItemsEl.appendChild(mealCard);
+    const mealsEl = document.getElementById(`meal-items`);
+    mealsEl.appendChild(mealCard);
   }
 
   _displayNewWorkout(workout) {
     console.log('display new workout')
     // Display item in respective items div
     const workoutCard = document.createElement('div');
-    workoutCard.className = `card my-2`;
+    workoutCard.setAttribute('data-id', workout.id);
+    workoutCard.classList.add('card', 'my-2');
+
     workoutCard.innerHTML = `
       <div class="card-body">
         <div class="d-flex align-items-center justify-content-between">
@@ -249,8 +252,8 @@ class CalorieTracker {
         </div>
       </div>
     `;
-    const workoutItemsEl = document.getElementById(`workout-items`);
-    workoutItemsEl.appendChild(workoutCard);
+    const workoutsEl = document.getElementById(`workout-items`);
+    workoutsEl.appendChild(workoutCard);
   }
 }
 

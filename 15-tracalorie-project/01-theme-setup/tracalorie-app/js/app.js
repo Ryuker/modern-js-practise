@@ -30,26 +30,6 @@ class App {
       this._tracker.addWorkout(workout);
     }
     
-    
-
-    // Display Meal in meal items div
-    const itemCard = document.createElement('div');
-    itemCard.className = `card my-2`;
-    itemCard.innerHTML = `
-      <div class="card-body">
-        <div class="d-flex align-items-center justify-content-between">
-          <h4 class="mx-1">${name.value}</h4>
-          <div class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5">
-            ${calories.value}
-          </div>
-          <button class="delete btn btn-danger btn-sm mx-2">
-            <i class="fa-solid fa-xmark"></i>
-          </button>
-        </div>
-      </div>
-    `;
-    const typeItemsEl = document.getElementById(`${type}-items`);
-    typeItemsEl.appendChild(itemCard);
 
     // reset the name and calories field to nothing
     name.value = '';
@@ -128,6 +108,7 @@ class CalorieTracker {
     console.log('Adding meal');
     this._meals.push(meal);
     this._totalCalories += meal.calories;
+    this._displayNewMeal(meal);
     this._renderStats();    
   }
 
@@ -139,6 +120,7 @@ class CalorieTracker {
     console.log('Adding workout');
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
+    this._displayNewWorkout(workout);
     this._renderStats();
   }
 
@@ -227,12 +209,48 @@ class CalorieTracker {
     progressEl.style.width = `${width}%`;
   }
 
-  _displayNewMeal() {
+  _displayNewMeal(meal) {
     console.log('display new meal')
+    // Display item in respective items div
+    const mealCard = document.createElement('div');
+    mealCard.className = `card my-2`;
+    mealCard.innerHTML = `
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="mx-1">${meal.name}</h4>
+          <div class="fs-1 bg-primary text-white text-center rounded-2 px-2 px-sm-5">
+            ${meal.calories}
+          </div>
+          <button class="delete btn btn-danger btn-sm mx-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    const mealItemsEl = document.getElementById(`meal-items`);
+    mealItemsEl.appendChild(mealCard);
   }
 
-  _displayNewWorkout() {
+  _displayNewWorkout(workout) {
     console.log('display new workout')
+    // Display item in respective items div
+    const workoutCard = document.createElement('div');
+    workoutCard.className = `card my-2`;
+    workoutCard.innerHTML = `
+      <div class="card-body">
+        <div class="d-flex align-items-center justify-content-between">
+          <h4 class="mx-1">${workout.name}</h4>
+          <div class="fs-1 bg-secondary text-white text-center rounded-2 px-2 px-sm-5">
+            ${workout.calories}
+          </div>
+          <button class="delete btn btn-danger btn-sm mx-2">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </div>
+      </div>
+    `;
+    const workoutItemsEl = document.getElementById(`workout-items`);
+    workoutItemsEl.appendChild(workoutCard);
   }
 }
 

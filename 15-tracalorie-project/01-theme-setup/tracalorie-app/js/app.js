@@ -46,12 +46,27 @@ class App {
 
   _removeItem(type, e) {
     console.log('remove item called');
+    if (e.target.classList.contains('delete') || e.target.classList.contains('fa-xmark')) {
+      if (confirm('Are you sure?')) {
+        //gets the closest card element to the target 
+        const id = e.target.closest('.card').getAttribute('data-id');  
+        console.log(id); 
+        
+        // Check the type and remove the item from the respective tracker array
+        type === 'meal' 
+          ? this._tracker.removeMeal(id)
+          : this._tracker.removeWorkout(id);
+
+        // remove the list item from the dom
+        e.target.closest('.card').remove();
+      }
+    }
     
     // Remove meal
     this._tracker.removeMeal();
 
     // Remove workout
-    this._tracker.removeWorkout();
+    // this._tracker.removeWorkout();
   }
   
   _filterItems() {
@@ -114,7 +129,7 @@ class CalorieTracker {
     this._renderStats();    
   }
 
-  removeMeal() {
+  removeMeal(id) {
     console.log('Removing meal');
   }
 
@@ -126,7 +141,7 @@ class CalorieTracker {
     this._renderStats();
   }
 
-  removeWorkout() {
+  removeWorkout(id) {
     console.log('Removing workout');
   }
 

@@ -7,6 +7,8 @@ class App {
 
     document.getElementById('meal-form').addEventListener('submit', this._newItem.bind(this, 'meal'));
     document.getElementById('workout-form').addEventListener('submit', this._newItem.bind(this, 'workout'));
+
+    document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
   }
 
 
@@ -42,7 +44,7 @@ class App {
     });
   }
 
-  _removeItem() {
+  _removeItem(type, e) {
     console.log('remove item called');
     
     // Remove meal
@@ -254,6 +256,7 @@ class CalorieTracker {
     `;
     const workoutsEl = document.getElementById(`workout-items`);
     workoutsEl.appendChild(workoutCard);
+
   }
 }
 

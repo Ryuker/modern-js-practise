@@ -15,6 +15,8 @@ class App {
     document.getElementById('filter-workouts').addEventListener('keyup', this._filterItems.bind(this, 'workout'));
 
     document.getElementById('reset').addEventListener('click', this._reset.bind(this));
+    
+    document.getElementById('limit-form').addEventListener('submit', this._setLimit.bind(this));
   }
 
 
@@ -101,8 +103,23 @@ class App {
     document.getElementById('filter-workouts').value = '';
   }
 
-  _setLimit() {
+  _setLimit(e) {
+    e.preventDefault();
     console.log('set limit called');
+    const limit = document.getElementById('limit');
+    if (limit.value === ''){
+      alert('Please add a limit');
+      return;
+    }
+
+    this._tracker.setLimit(+limit.value);
+    limit.value = '';
+
+    // close the modal
+    const modalEl = document.getElementById('limit-modal');
+    const modal = bootstrap.Modal.getInstance(modalEl);
+    modal.hide();
+
   }
 }
 
@@ -192,8 +209,11 @@ class CalorieTracker {
     this._renderStats();  
   }
 
-  setLimit() {
+  setLimit(calorieLimit) {
     console.log('Setting limit');
+    this._calorieLimit = calorieLimit;
+    this._displayCalorieLimit();
+    this._renderStats();
   }
 
   loadItems() {

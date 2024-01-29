@@ -9,6 +9,7 @@ class App {
     document.getElementById('workout-form').addEventListener('submit', this._newItem.bind(this, 'workout'));
 
     document.getElementById('meal-items').addEventListener('click', this._removeItem.bind(this, 'meal'));
+    document.getElementById('workout-items').addEventListener('click', this._removeItem.bind(this, 'workout'));
   }
 
 
@@ -151,6 +152,14 @@ class CalorieTracker {
 
   removeWorkout(id) {
     console.log('Removing workout');
+    const index = this._workouts.findIndex(workout => workout.id === id);
+
+    if (index !== -1) {
+      const workout = this._workouts[index];
+      this._totalCalories += workout.calories;
+      this._workouts.splice(index, 1);
+      this._renderStats();
+    }
   }
 
   resetDay() {

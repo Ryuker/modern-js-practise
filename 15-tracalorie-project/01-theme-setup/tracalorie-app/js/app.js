@@ -131,6 +131,14 @@ class CalorieTracker {
 
   removeMeal(id) {
     console.log('Removing meal');
+    const index = this._meals.findIndex(meal => meal.id === id);
+
+    if (index !== -1) {
+      const meal = this._meals[index];
+      this._totalCalories -= meal.calories;
+      this._meals.splice(index, 1);
+      this._renderStats();
+    }
   }
 
   addWorkout(workout) {

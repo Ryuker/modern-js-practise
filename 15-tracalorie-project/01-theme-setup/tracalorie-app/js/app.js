@@ -13,6 +13,8 @@ class App {
 
     document.getElementById('filter-meals').addEventListener('keyup', this._filterItems.bind(this, 'meal'));
     document.getElementById('filter-workouts').addEventListener('keyup', this._filterItems.bind(this, 'workout'));
+
+    document.getElementById('reset').addEventListener('click', this._reset.bind(this));
   }
 
 
@@ -89,7 +91,14 @@ class App {
   
   _reset() {
     console.log('reset called');
+    // clean up the tracker property values
     this._tracker.resetDay();
+    
+    // reset the dom items
+    document.getElementById('meal-items').innerHTML = ''; 
+    document.getElementById('workout-items').innerHTML = ''; 
+    document.getElementById('filter-meals').value = '';
+    document.getElementById('filter-workouts').value = '';
   }
 
   _setLimit() {
@@ -177,6 +186,10 @@ class CalorieTracker {
 
   resetDay() {
     console.log('Resetting day');
+    this._totalCalories = 0;
+    this._meals = [];
+    this._workouts = [];
+    this._renderStats();  
   }
 
   setLimit() {

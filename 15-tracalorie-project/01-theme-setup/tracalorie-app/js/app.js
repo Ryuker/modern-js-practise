@@ -340,12 +340,21 @@ class CalorieTracker {
 
 // Static Storage
 class Storage{
-  static getCalorieLimit() {
+  static getCalorieLimit(defaultLimit = 2000) {
     console.log('Getting calorie limit');
+    let calorieLimit;
+    if (localStorage.getItem('calorieLimit') === null) {
+      calorieLimit = defaultLimit;
+    } else {
+      calorieLimit = localStorage.getItem('calorieLimit');
+    }
+
+    return calorieLimit;
   }
   
-  static setCalorieLimit() {
+  static setCalorieLimit(calorieLimit) {
     console.log('Setting calorie limit');
+    localStorage.setItem('calorieLimit', calorieLimit);
   }
 
   static getTotalCalories() {

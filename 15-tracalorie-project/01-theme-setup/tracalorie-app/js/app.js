@@ -17,6 +17,8 @@ class App {
     document.getElementById('reset').addEventListener('click', this._reset.bind(this));
     
     document.getElementById('limit-form').addEventListener('submit', this._setLimit.bind(this));
+
+    this._tracker.loadItems();
   }
 
 
@@ -120,7 +122,6 @@ class App {
     const modalEl = document.getElementById('limit-modal');
     const modal = bootstrap.Modal.getInstance(modalEl);
     modal.hide();
-
   }
 }
 
@@ -225,6 +226,7 @@ class CalorieTracker {
 
   loadItems() {
     console.log('Loading items');
+    this._meals.forEach(meal => this._displayNewMeal(meal));
   }
 
   // Private methods

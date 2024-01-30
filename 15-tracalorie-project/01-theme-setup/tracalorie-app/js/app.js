@@ -454,6 +454,9 @@ class Storage{
     localStorage.removeItem('totalCalories');
     localStorage.removeItem('meals');
     localStorage.removeItem('workouts');
+
+    // if you want to clear the full storage
+    // localStorage.clear();
   }
 }
 

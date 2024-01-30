@@ -153,7 +153,7 @@ class CalorieTracker {
     this._calorieLimit = Storage.getCalorieLimit();
     this._totalCalories = Storage.getTotalCalories();
     this._meals = Storage.getMeals();
-    this._workouts = [];
+    this._workouts = Storage.getWorkouts();
 
     this._displayCalorieLimit();
     this._displayCaloriesTotal();
@@ -193,6 +193,7 @@ class CalorieTracker {
     this._workouts.push(workout);
     this._totalCalories -= workout.calories;
     Storage.updateTotalCalories(this._totalCalories);
+    Storage.saveWorkout(workout);
     this._displayNewWorkout(workout);
     this._renderStats();
   }
@@ -229,6 +230,7 @@ class CalorieTracker {
   loadItems() {
     console.log('Loading items');
     this._meals.forEach(meal => this._displayNewMeal(meal));
+    this._workouts.forEach(workout => this._displayNewWorkout(workout));
   }
 
   // Private methods
@@ -400,12 +402,16 @@ class Storage{
     const meals = Storage.getMeals();
   }
 
-  static saveWorkout() {
+  static saveWorkout(workout) {
     console.log('Saving workout');
+    const workouts = Storage.getWorkouts();
+    workouts.push(workout);
+    localStorage.setItem('workouts', JSON.stringify(workouts));
   }
 
   static removeWorkout() {
     console.log('Removing workout');
+    const workouts = Storage.getWorkouts();
   }
 
   static getMeals() {
@@ -421,6 +427,13 @@ class Storage{
 
   static getWorkouts() {
     console.log('Getting workouts');
+    let workouts;
+    if (localStorage.getItem('workouts') === null) {
+      workouts = [];
+    } else {
+      workouts = JSON.parse(localStorage.getItem('workouts'));
+    }
+    return workouts;
   }
 
   static clearAll() {

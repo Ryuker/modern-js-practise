@@ -113,6 +113,7 @@ class App {
     }
 
     this._tracker.setLimit(+limit.value);
+
     limit.value = '';
 
     // close the modal
@@ -146,7 +147,7 @@ class Workout {
 // Calorie Tracker
 class CalorieTracker {
   constructor() {
-    this._calorieLimit = 2000;
+    this._calorieLimit = Storage.getCalorieLimit();
     this._totalCalories = 0;
     this._meals = [];
     this._workouts = [];
@@ -212,6 +213,7 @@ class CalorieTracker {
   setLimit(calorieLimit) {
     console.log('Setting limit');
     this._calorieLimit = calorieLimit;
+    Storage.setCalorieLimit(calorieLimit);
     this._displayCalorieLimit();
     this._renderStats();
   }

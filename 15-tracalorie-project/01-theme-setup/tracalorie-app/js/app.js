@@ -4,7 +4,12 @@
 class App {
   constructor() {
     this._tracker = new CalorieTracker();
+    this._loadEventListeners();
 
+    this._tracker.loadItems();
+  }
+
+  _loadEventListeners() {
     document.getElementById('meal-form').addEventListener('submit', this._newItem.bind(this, 'meal'));
     document.getElementById('workout-form').addEventListener('submit', this._newItem.bind(this, 'workout'));
 
@@ -17,10 +22,7 @@ class App {
     document.getElementById('reset').addEventListener('click', this._reset.bind(this));
     
     document.getElementById('limit-form').addEventListener('submit', this._setLimit.bind(this));
-
-    this._tracker.loadItems();
   }
-
 
   _newItem(type, e) {
     e.preventDefault();

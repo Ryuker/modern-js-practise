@@ -82,3 +82,16 @@ $npm run dev
 - Modules aren't supported in older browsers (eg. Internet Explorer)
 
 
+# 4. Module Bundlers
+## What is a module Bundler
+A Module bundler is a tool that takes all of your source code, which is usually multiple files and bundles them together, often times, into a single build file.
+
+## Basic Setup of Webpack
+Install webpack and webpack cli - as dev dependency
+``` JS Terminal
+$npm i -D webpack webpack-cli
+```
+
+
+
+

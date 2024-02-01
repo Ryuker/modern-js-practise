@@ -111,6 +111,30 @@ module: {
 ```
 - The regular expression uses '\.css$'' to indicate any .css file needs to use the loader
 
+## Install HTML webpack plugin
+```JS Terminal
+$npm i -D html-webpack-plugin
+```
+- Used for generating HTML files with webpack to the 'dist' folder
+
+```JS webpack.config.js
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+----
+plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack App',
+      filename: 'index.html',
+      template: './src/index.html'
+    })
+  ]
+```
+
+``` HTML
+<%= htmlWebpackPlugin.options.title %> 
+```
+- Allow to access webpack options in the html template file. This gets output to the dist.
+
+
 
 
 

@@ -29,3 +29,14 @@
 - The inner workings are similar to the browser, since it uses the v8 engine. 
 - Obviously the is no 'Window' or 'Document' in Node
 
+# 3. Installing packages
+``` JS Terminal
+$npm init
+```
+creates a **package.json** file for configuration
+
+To go with the default answers in the package.json file
+``` JS Terminal
+$npm init -y
+```
+

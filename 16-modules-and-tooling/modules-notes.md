@@ -74,4 +74,11 @@ $npm run dev
 ```
 - Use 'ctrl+c' to close nodemon server
 
+# 4. ES-Modules
+- Requires that you specify the type as module in the page head
+``` HTML
+<script src="app.js" type="module" defer></script>
+```
+- Modules aren't supported in older browsers (eg. Internet Explorer)
+
 

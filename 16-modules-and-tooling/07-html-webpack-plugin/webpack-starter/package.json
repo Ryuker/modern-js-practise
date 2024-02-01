@@ -1,0 +1,17 @@
+{
+  "name": "webpack-boilerplate",
+  "version": "1.0.0",
+  "description": "A simple boilerplate for creating apps using Webpack tooling",
+  "main": "app.js",
+  "scripts": {
+    "build": "webpack"
+  },
+  "author": "Ryuker",
+  "license": "MIT",
+  "devDependencies": {
+    "css-loader": "^6.10.0",
+    "style-loader": "^3.3.4",
+    "webpack": "^5.90.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

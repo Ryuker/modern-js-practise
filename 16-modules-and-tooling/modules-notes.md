@@ -98,6 +98,19 @@ $npm i -D style-loader css-loader
 ```
 - Loaders need configuration. This is done in **webpack.config.js**
 
+These loaders require a config. This uses a regular expression
+``` JS webpack.config.js
+module: {
+    rules: [
+      {
+        test: /\.css$/,                  
+        use: ['style-loader', 'css-loader']
+      }
+    ]
+  }
+```
+- The regular expression uses '\.css$'' to indicate any .css file needs to use the loader
+
 
 
 

@@ -40,3 +40,38 @@ To go with the default answers in the package.json file
 $npm init -y
 ```
 
+To install a package globally
+``` JS Terminal
+$npm i -g axios
+```
+
+-D runs it only on development, gets added in package.json under devDependencies
+``` JS Terminal
+$npm i -D nodemon
+```
+
+Setups a script to run app.js (but could be anything)
+``` JS package.json
+"scripts": {
+  "start": "node app.js"
+}
+```
+Call the script
+``` JS Terminal
+$npm start
+```
+
+! if it's not 'start' then use 'npm run dev'
+example:
+``` JS package.json
+"scripts": {
+  "dev": "nodemon app.js"
+}
+```
+
+``` JS Terminal
+$npm run dev
+```
+- Use 'ctrl+c' to close nodemon server
+
+

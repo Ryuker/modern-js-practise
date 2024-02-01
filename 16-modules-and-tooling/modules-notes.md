@@ -92,6 +92,14 @@ Install webpack and webpack cli - as dev dependency
 $npm i -D webpack webpack-cli
 ```
 
+## Style Loader and CSS loader install
+``` JS Terminal
+$npm i -D style-loader css-loader
+```
+- Loaders need configuration. This is done in **webpack.config.js**
+
+
+
 
 
 

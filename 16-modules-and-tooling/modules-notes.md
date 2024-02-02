@@ -184,6 +184,37 @@ add this configuration under rules
       }
 ```
 
+## CSS Minification
+- Minifies CSS into a main.css file, make sure css is loaded properly in the dev server
+install
+``` JS Terminal
+$npm i -D mini-css-extract-plugin
+```
+
+config
+``` JS webpack.config.js
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+~ other code ~ 
+rules: [
+      {
+        test: /\.css$/,                       // regular expression: '.css$' means it should end with .css
+                                              // This means any file that ends with a .css uses the loader
+        use: [MiniCssExtractPlugin.loader, 'css-loader']
+      },
+]
+
+~ other code ~ 
+plugins: [
+    new HtmlWebpackPlugin({
+      title: 'Webpack App',
+      filename: 'index.html',
+      template: './src/index.html'
+    }),
+    new MiniCssExtractPlugin()
+  ]
+
+```
+
 
 
 

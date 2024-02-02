@@ -134,8 +134,31 @@ plugins: [
 ```
 - Allow to access webpack options in the html template file. This gets output to the dist.
 
+## Webpack Dev Server
 
+To Install
+``` JS Terminal
+$npm i -D webpack-dev-server
+```
 
+Add under scripts
+``` JS package.json
+"dev": "webpack serve"
+```
+
+Add the following in the module exports
+``` JS webpack.config.js
+devServer: {
+    static: {
+      directory: path.resolve(__dirname, 'dist')
+    },
+    port: 3000,
+    open: true,
+    hot: true,
+    compress: true,
+    historyApiFallback: true
+  },
+```
 
 
 

@@ -24,6 +24,16 @@ module.exports = {
         test: /\.css$/,                       // regular expression: '.css$' means it should end with .css
                                               // This means any file that ends with a .css uses the loader
         use: ['style-loader', 'css-loader']
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
       }
     ]
   },

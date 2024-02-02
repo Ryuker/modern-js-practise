@@ -162,6 +162,27 @@ devServer: {
 ```
 
 ## Babel Package
+- Interprets JavaScript to the version of the code with the most browser support
+- It's not needed in most cases anymore, but it does make the application a bit more backward compatible.
+
+install
+``` JS Terminal
+$npm i babel-loader @babel/core @babel/preset-env -D
+```
+
+add this configuration under rules
+``` JS webpack.config.js
+{
+        test: /\.js$/, // every javascript file
+        exclude: /node_modules/, // that's not in the node_modules
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: ['@babel/preset-env']
+          }
+        }
+      }
+```
 
 
 

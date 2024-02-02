@@ -135,6 +135,7 @@ plugins: [
 - Allow to access webpack options in the html template file. This gets output to the dist.
 
 ## Webpack Dev Server
+- Auto Builds on file change, providing hot reloading during development
 
 To Install
 ``` JS Terminal

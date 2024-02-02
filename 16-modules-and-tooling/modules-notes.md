@@ -215,6 +215,13 @@ plugins: [
 
 ```
 
+# 5. Tracalorie Refactor Notes
+
+install fontawesome as modules
+``` JS Terminal
+$npm i bootstrap @fortawesome/fontawesome-free
+```
+
 
 
 

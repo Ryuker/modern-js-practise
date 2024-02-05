@@ -28,3 +28,10 @@ console.log(Symbol('sym') === Symbol('sym')); // returns false
 - Symbols are mainly used to use the same names while avoiding overriding the value, they avoid naming collisions
 - They protect values from overwrite since they are a unique place in registry.
 - But they are not private.
+
+## Iterators
+- are a Symbol
+- are used to iterate through an object array
+  - useful when you need to step through an array
+  - useful when you need more control what is returned from an object to a for loop
+- They are pretty advanced and likely won't be used much for simple stuff

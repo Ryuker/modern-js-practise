@@ -85,6 +85,10 @@ console.log(first, second, third);
 - Values in a Set have to be unique, can't have [2, 2, 2] for example, this will just log '2';
 
 ## Maps
+- A datastructure that was added in ES15
+- Maps are similar to objects (they have key value pairs)
+  -  but the key doesn't have to be a string
+  -  it can an array, number, object etc
 
 
 

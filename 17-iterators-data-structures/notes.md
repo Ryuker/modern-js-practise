@@ -35,3 +35,46 @@ console.log(Symbol('sym') === Symbol('sym')); // returns false
   - useful when you need to step through an array
   - useful when you need more control what is returned from an object to a for loop
 - They are pretty advanced and likely won't be used much for simple stuff
+
+## Generators
+- Generators are functions that can be paused and resumed
+- They use 'yield' to pause execution of a for loop for example and return a value
+- They are iterable by for loops etc
+
+to declare
+```JS
+function* {} // asterisk indicates the function is a generator
+```
+
+code example
+```JS
+function* createTeamIterator(teams) {
+  for (let i = 0; i < teams.length; i++) {
+    yield teams[i];
+  }
+}
+```
+usage
+```JS
+const teams = ['Red Sox', 'Yankees', 'Astros', 'Dodgers'];
+const iterator = createTeamIterator(teams);
+console.log(iterator.next());
+console.log(iterator.next());
+// etc
+```
+
+they are iterable
+```JS
+// Using For loop
+for (const team of createTeamIterator(teams)){
+  console.log(team);
+}
+
+// Using Spread Operator to populate array
+console.log([...createTeamIterator(teams)]);
+
+// We can use destructuring
+const [ first, second, third ] = createTeamIterator(teams);
+console.log(first, second, third);
+```
+

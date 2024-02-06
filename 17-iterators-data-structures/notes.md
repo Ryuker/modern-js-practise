@@ -78,3 +78,10 @@ const [ first, second, third ] = createTeamIterator(teams);
 console.log(first, second, third);
 ```
 
+## Sets
+- A datastructure allow to store a collection of unique values
+- They are unordered and they don't allow duplicates
+- They are usefull when you want to store values that you want to check for membership but you don't care about the order of the values
+- Values in a Set have to be unique, can't have [2, 2, 2] for example, this will just log '2';
+
+

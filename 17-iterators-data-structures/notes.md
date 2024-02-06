@@ -84,4 +84,7 @@ console.log(first, second, third);
 - They are usefull when you want to store values that you want to check for membership but you don't care about the order of the values
 - Values in a Set have to be unique, can't have [2, 2, 2] for example, this will just log '2';
 
+## Maps
+
+
 

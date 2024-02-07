@@ -96,10 +96,13 @@ console.log(first, second, third);
 
 ## Stacks (Last In - First Out)
 - You don't use these much but they pop up in job interviews
-- Have a push, pop, peek, length, isEmpty and clear method.
+- Have a push(), pop(), peek(), length(), isEmpty() and clear() method.
 - more of a lower level thing
 
-## Queus 
+## Queues (First In - First Out)
+- similar to stacks but enqueue pushes the items to the right instead of to the left
+- methods: enqueue(), dequeue(), peek(), length(), isEmpty()
+
 
 
 

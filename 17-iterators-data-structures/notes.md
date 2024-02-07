@@ -90,7 +90,17 @@ console.log(first, second, third);
   -  but the key doesn't have to be a string
   -  it can an array, number, object etc
 
-## Stacks
+# Custom datastructures
+- These aren't in JavaScript but they are often used with custom classes
+- Important to know for job interviews etc
+
+## Stacks (Last In - First Out)
+- You don't use these much but they pop up in job interviews
+- Have a push, pop, peek, length, isEmpty and clear method.
+- more of a lower level thing
+
+## Queus 
+
 
 
 

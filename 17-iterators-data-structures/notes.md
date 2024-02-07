@@ -103,6 +103,8 @@ console.log(first, second, third);
 - similar to stacks but enqueue pushes the items to the right instead of to the left
 - methods: enqueue(), dequeue(), peek(), length(), isEmpty()
 
+## Linked Lists
+
 
 
 

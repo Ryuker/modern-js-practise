@@ -104,7 +104,17 @@ console.log(first, second, third);
 - methods: enqueue(), dequeue(), peek(), length(), isEmpty()
 
 ## Linked Lists
+- Linked List has a bunch of nodes which hold a value
+- The first node is the Head and a last node is the Tail
+``` JS
+Head (300) > (200) > (100) > (50) Tail
+```
 
+- Each node has a 'next' value which points to the next node in the list
+  - only the tail points to null.
+- methods: insertFirst(), insertLast(), insertAt(), getAt(), removeAt(), printListData(), clearList()
+- Can also show up in interviews
+  
 
 
 

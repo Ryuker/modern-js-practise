@@ -20,4 +20,21 @@ Acceptance Testing, System Testing, Integration Testing, Unit Testing
 - is very popular, has a lot of tutorials and documentation
 
 ## Getting Started with Jest
-- 
+setup:
+```JS Terminal
+$npm init -y  // -y creates a package.json file without having to through config
+$npm i -D jest
+```
+``` JS package.json
+"scripts": {
+    "test": "jest"
+  },
+```
+- Create a sum.js file and a sum.test.js
+  - It's common to write the test first.
+
+To Run:
+``` JS Terminal
+$npm run test
+``` 
+

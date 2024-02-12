@@ -2,7 +2,7 @@ const reverseString = require('../reversestring/reversestring');
 
 // My solution
 // function palindrome(str) {
-//   return str == reverseString(str);
+//   return str === reverseString(str);
 // }
 
 // Video Solution

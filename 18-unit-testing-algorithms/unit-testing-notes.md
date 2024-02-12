@@ -42,5 +42,11 @@ $npm run test
 
 ## Reverse String
 - Often shows up on job interviews
+- is supposed to return a string
+- requires conversion to an array, then reversing the array elements and then converting it back to an array
+- there are multiple solutions to it
+
+## Palindrome Algorithm
+- 
 
 

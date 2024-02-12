@@ -6,7 +6,7 @@ describe('Palindrome', () => {
   });
 
   it('should return a boolean', () => {
-    expect(typeof palindrome('hello')).toEqual('bool');
+    expect(typeof palindrome('hello')).toEqual('boolean');
   });
 
   it('should return true if is a palindrome', () => {

@@ -4,6 +4,7 @@
 const chunk = (array,size) => {
   const chunked = [];
   
+  // devide array into sub arrays into chunked
   for (let element of array) {
     const last = chunked[chunked.length-1]; // get the last element of the chunked array
     

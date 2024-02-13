@@ -59,4 +59,7 @@ $npm run test
 - Is a word or phrase that is forged by rearranging the elements of the other
 - example: 'cinema' and 'iceman' have the same character in a different order
 
+## Get Elements By Tag
+
+
 

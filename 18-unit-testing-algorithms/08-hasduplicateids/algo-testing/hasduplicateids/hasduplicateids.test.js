@@ -32,4 +32,24 @@ describe('DOM Tree has Duplicate IDs', () => {
 
     expect(result).toEqual(true);
   });
+
+  it('should return false if there are no duplicate IDs', () => {
+    // create mock elements
+    const root = document.createElement('div');
+    
+    // children
+    const child1 = document.createElement('div');
+    const child2 = document.createElement('div');
+    root.appendChild(child1);
+    root.appendChild(child2);
+
+    // Add IDs
+    root.id = 'root';
+    child1.id = 'child1'
+    child2.id = 'chil2'
+
+    const result = hasDuplicateIds(root);
+
+    expect(result).toEqual(false);
+  });
 });

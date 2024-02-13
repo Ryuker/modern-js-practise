@@ -1,6 +1,28 @@
 const hasDuplicateIds = require('./hasduplicateids')
 
 describe('DOM Tree has Duplicate IDs', () => {
+  let root;
+
+  // Runs before a test, to prevent duplicate code
+  beforeEach(() => {
+    console.log('before each ran');
+    // create mock elements
+    root = document.createElement('div');
+    
+    // children
+    const child1 = document.createElement('div');
+    const child2 = document.createElement('div');
+    root.appendChild(child1);
+    root.appendChild(child2);
+  });
+
+  // runs after the test
+  afterEach(() => {
+    console.log('after each ran');
+    root = null;
+  });
+
+  // the tests
   it('should be a function', () => {
     expect(typeof hasDuplicateIds).toEqual('function');
   });
@@ -14,19 +36,10 @@ describe('DOM Tree has Duplicate IDs', () => {
   });
 
   it('should return true if there are duplicate IDs', () => {
-    // create mock elements
-    const root = document.createElement('div');
-    
-    // children
-    const child1 = document.createElement('div');
-    const child2 = document.createElement('div');
-    root.appendChild(child1);
-    root.appendChild(child2);
-
     // Add duplicate IDs
     root.id = 'root';
-    child1.id = 'child'
-    child2.id = 'child'
+    root.children[0].id = 'child'
+    root.children[1].id = 'child'
 
     const result = hasDuplicateIds(root);
 
@@ -34,19 +47,10 @@ describe('DOM Tree has Duplicate IDs', () => {
   });
 
   it('should return false if there are no duplicate IDs', () => {
-    // create mock elements
-    const root = document.createElement('div');
-    
-    // children
-    const child1 = document.createElement('div');
-    const child2 = document.createElement('div');
-    root.appendChild(child1);
-    root.appendChild(child2);
-
     // Add IDs
     root.id = 'root';
-    child1.id = 'child1'
-    child2.id = 'chil2'
+    root.children[0].id = 'child1'
+    root.children[1].id = 'child2'
 
     const result = hasDuplicateIds(root);
 

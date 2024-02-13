@@ -60,19 +60,21 @@ $npm run test
 - example: 'cinema' and 'iceman' have the same character in a different order
 
 ## Get Elements By Tag
-
+- custom function to return the elements by tag of a dom element.
 - we need a Jest DOM package for this, to install:
 ```JS Terminal
 $npm i -D jest-environment-jsdom
 ```
 - You need a `jest.config.js` file in the root
-``` JS jest.config.js
+```JS jest.config.js
 const config = {
   testEnvironment: 'jsdom'
 };
 
 module.exports = config;
-````
+```
+
+## Has Duplicate IDs
 
 
 

@@ -13,4 +13,27 @@ describe('Get Elements By Tag', () => {
     expect(getElementsByTag()).toEqual([]);
   });
 
+  it('should return only the root element if not tagname is passed in', () => {
+    const root = document.createElement('div');
+
+    expect(getElementsByTag(root)).toEqual([root]);
+  });
+
+  it('should return the correct elements', () => {
+    const root = document.createElement('div');
+    
+    // mock child elements
+    const p1 = document.createElement('p');
+    const p2 = document.createElement('p');
+    const span = document.createElement('span');
+
+    root.appendChild(p1);
+    root.appendChild(span);
+    span.appendChild(p2);
+
+    const result = getElementsByTag(root, 'p');
+
+    expect(result).toEqual([p1, p2]);
+  });
+
 });

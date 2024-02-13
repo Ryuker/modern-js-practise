@@ -61,5 +61,10 @@ $npm run test
 
 ## Get Elements By Tag
 
+- we need a DOM package for this, to install:
+```JS Terminal
+$npm i -D jest-environment-jsdom
+```
+
 
 

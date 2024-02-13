@@ -1,7 +1,9 @@
-const arraychunk = require('./arraychunk');
+const assert = require('assert');
+const chunk = require('./arraychunk');
 
-describe('Some test', () => {
-  it('is a function', () => {
-    expect(typeof arraychunk).toEqual('function');
+describe('Array Chunking', () => {
+  it('should create chunks of a specific size', () => {
+    assert.deepEqual(chunk([1, 2, 3, 4], 2), [[1,2], [3,4]]);
+    assert.deepEqual(chunk([1, 2, 3, 4], 3), [[1,2,3], [4]]);
   });
 })

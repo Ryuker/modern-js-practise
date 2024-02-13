@@ -47,6 +47,12 @@ $npm run test
 - there are multiple solutions to it
 
 ## Palindrome Algorithm
-- 
+- checks if the string is equal to the reverse of a string (example: wow)
+
+## Array Chunking
+- Returns a new array based on the array passed in, splitting the array into sub arrays of chunks of the specified size  
+  example: 
+  [1, 2, 3, 4,] and size 2 = [ [1,2], [3,4] ]
+  [1, 2, 3, 4, 5] and size 3 = [ [1,2,3], [4,5] ]
 
 

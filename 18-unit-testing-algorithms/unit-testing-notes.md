@@ -56,5 +56,7 @@ $npm run test
   [1, 2, 3, 4, 5] and size 3 = [ [1,2,3], [4,5] ]
 
 ## Anagrams
+- Is a word or phrase that is forged by rearranging the elements of the other
+- example: 'cinema' and 'iceman' have the same character in a different order
 
 

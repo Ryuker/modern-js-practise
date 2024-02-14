@@ -11,3 +11,4 @@ Modules  we'll cover:
 
 
 ## fs (filesystem) Module
+read: [Documentation](https://nodejs.org/api/fs.html)

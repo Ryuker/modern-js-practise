@@ -12,3 +12,6 @@ Modules  we'll cover:
 
 ## fs (filesystem) Module
 read: [Documentation](https://nodejs.org/api/fs.html)
+
+## path Module
+- Is a core module that allows us to work with files and directory paths

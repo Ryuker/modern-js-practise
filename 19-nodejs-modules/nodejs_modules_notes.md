@@ -28,11 +28,34 @@ The most basic server setup:
 ```JS 
 const http = require('http');
 
+// Create the server
 const server = http.createServer((request, response) => {
   response.end('Hello World');
 });
 
+// Run the server
 server.listen(5000, () => {
   console.log('Server is listening on port 5000');
 });
 ```
+
+Very Basic Page Routing
+```JS
+const server = http.createServer((request, response) => {
+  const url = request.url;
+
+  // Basic Routing
+  if (url === '/') {
+    // Ensures it gets parsed by the browser
+    response.writeHead(200, { 'content-type': 'text/html' });
+    response.end('<h1>Welcome</h1>');
+  } else if (url === '/about') {
+    response.writeHead(200, { 'content-type': 'text/html' });
+    response.end('<h1>About Page</h1>');
+  } else {
+    response.writeHead(404, { 'content-type': 'text/html' });
+    response.end('<h1>Page Not Found</h1>');
+  }
+});
+```
+

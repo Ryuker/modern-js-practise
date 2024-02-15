@@ -76,3 +76,9 @@ Very basic returning of a file upon a request
   }
 ```
 
+Returning some JSON data (posts for example)
+```JS
+response.end(JSON.stringify({ success: true, data: posts }));
+```
+- returning it as an object with a success key and a data key is common practise
+

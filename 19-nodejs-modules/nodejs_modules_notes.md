@@ -21,3 +21,18 @@ read: [Documentation](https://nodejs.org/api/fs.html)
 ## url and querystring Module
 
 # http Module
+- Allows you to run a basic server
+  - not recommended to use this for a server since it requires a lot of code, but Express is built on this.
+
+The most basic server setup:
+```JS 
+const http = require('http');
+
+const server = http.createServer((request, response) => {
+  response.end('Hello World');
+});
+
+server.listen(5000, () => {
+  console.log('Server is listening on port 5000');
+});
+```

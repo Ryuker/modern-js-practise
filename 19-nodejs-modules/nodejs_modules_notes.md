@@ -59,3 +59,20 @@ const server = http.createServer((request, response) => {
 });
 ```
 
+Very basic returning of a file upon a request
+```JS
+~~ inside the create server callback ~~
+  if (url === '/') {  
+    // return the contents of a file
+    fs.readFile('index.html', (error, file) => {
+      if (error) {
+        response.writeHead(500, { 'content-type': 'text/html' });
+        response.end('<h1>Sorry, we have a problem</h1>');
+      } else {
+        response.writeHead(200, { 'content-type': 'text/html' });
+        response.end(file);
+      }
+    });
+  }
+```
+

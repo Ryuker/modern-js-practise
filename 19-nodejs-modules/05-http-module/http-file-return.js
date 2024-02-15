@@ -1,4 +1,4 @@
-// Http server
+// Http returning a file
 const http = require('http');
 const fs = require('fs');
 
@@ -18,9 +18,6 @@ const server = http.createServer((request, response) => {
         response.end(file);
       }
     });
-  } else if (url === '/about') {
-    response.writeHead(200, { 'content-type': 'text/html' });
-    response.end('<h1>About Page</h1>');
   } else {
     response.writeHead(404, { 'content-type': 'text/html' });
     response.end('<h1>Page Not Found</h1>');

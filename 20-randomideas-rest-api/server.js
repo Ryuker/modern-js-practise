@@ -45,7 +45,7 @@ app.get('/api/ideas/:id', (req, res) => {
     return res.status(404).json({ success: false , error: 'Resource not found' });
   }
 
-  return res.json({ success: true, data: idea });
+  res.json({ success: true, data: idea });
 });
 
 // start the server

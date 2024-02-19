@@ -29,7 +29,11 @@ returning a single item from a dynamic route:
 ``` JS
 // Get a single idea
 app.get('/api/ideas/:id', (req, res) => { 
-  req.params.id;
-  res.send({ success: true, data: req.params.id });
+  const idea = ideas.find(ideas => ideas.id === +req.params.id);
+  if (!idea){
+    return res.status(404).json({ success: false , error: 'Resource not found' });
+  }
+
+  return res.json({ success: true, data: idea });
 });
 ```

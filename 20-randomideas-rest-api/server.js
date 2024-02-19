@@ -42,10 +42,10 @@ app.get('/api/ideas', (req, res) => {
 app.get('/api/ideas/:id', (req, res) => { 
   const idea = ideas.find(ideas => ideas.id === +req.params.id);
   if (!idea){
-    res.status(404).json({ success: false , error: 'Resource not found' });
-  } else {
-    res.json({ success: true, data: idea });
+    return res.status(404).json({ success: false , error: 'Resource not found' });
   }
+
+  return res.json({ success: true, data: idea });
 });
 
 // start the server

@@ -37,3 +37,5 @@ app.get('/api/ideas/:id', (req, res) => {
   return res.json({ success: true, data: idea });
 });
 ```
+
+## 2. Setting up Nodemon to watch the server changes

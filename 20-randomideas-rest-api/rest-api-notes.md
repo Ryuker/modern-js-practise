@@ -69,6 +69,23 @@ example:
 res.send(req.body.text); // sends back the text in the body
 ```
 
+## Parsing a POST request to push an object to an array
+``` JS routes.js
+router.post('/', (req, res) => {
+  const idea = {
+    id: ideas.length + 1,
+    text: req.body.text,
+    tag: req.body.tag,
+    username: req.body.username,
+    date: new Date().toISOString().slice(0, 10),
+  };
+  ideas.push(idea);
+
+  res.json({ succes: true, data: idea});
+});
+```
+- This can push to a database as well of course.
+
 
 
 

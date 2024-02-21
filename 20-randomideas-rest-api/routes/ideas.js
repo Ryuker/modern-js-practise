@@ -55,5 +55,24 @@ router.post('/', (req, res) => {
   res.json({ succes: true, data: idea});
 });
 
+// Put - Update an idea
+router.put('/:id', (req, res) => {
+  const idea = ideas.find((idea) => idea.id === +req.params.id);  // Reference to the object inside the array
+
+  if (!idea){
+    return res.status(404).json({ success: false , error: 'Resource not found' });
+  }
+
+  // update the keys in the idea - this is done on the same object in the array, so we don't need to override it afterwards
+  idea.text = req.body.text  || idea.text;
+  idea.tag = req.body.tag  || idea.tag;
+
+  console.log(idea);
+
+  res.json({ succes: true, data: idea});
+});
+
+// 
+
 
 module.exports = router;

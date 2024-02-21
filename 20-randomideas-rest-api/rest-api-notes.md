@@ -87,6 +87,25 @@ router.post('/', (req, res) => {
 - This can push to a database as well of course.
 
 
+## PUT - To update an idea
+``` JS routes.js
+router.put('/:id', (req, res) => {
+  const idea = ideas.find((idea) => idea.id === +req.params.id); // this is a reference to the array element
+
+  // error checking if idea is not in the array 
+  if (!idea){
+    return res.status(404).json({ success: false , error: 'Resource not found' });
+  }
+
+  // update the keys in the idea
+  idea.text = req.body.text  || idea.text;
+  idea.tag = req.body.tag  || idea.tag;
+
+  // return the updated idea 
+  res.json({ succes: true, data: idea});
+});
+```
+
 
 
 

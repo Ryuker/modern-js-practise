@@ -4,6 +4,10 @@ const port = 5000;
 // Initialize a new Express app
 const app = express();
 
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+
 // Get request for '/' route
 app.get('/', (req, res) => { 
   res.send({message: 'Welcome to the RandomIdeas API'});

@@ -45,3 +45,31 @@ const ideasRouter = require('./routes/ideas');
 app.use('/api/ideas', ideasRouter);  // middleware
 ```
 
+
+## Handle POST Requests - Adding an Idea
+basic version:
+``` JS routes.js
+router.post('/', (req, res) => {
+  res.send('Post success');
+});
+```
+
+### Body parser middleware
+``` JS server.js
+// Body parser middleware
+app.use(express.json());
+app.use(express.urlencoded({ extended: false}));
+```
+
+## parsing a request 
+- With body parser middle ware setup we can parse the body of a request.
+example:
+``` JS routes.js
+~~~ in the router.post ~~~ block
+res.send(req.body.text); // sends back the text in the body
+```
+
+
+
+
+

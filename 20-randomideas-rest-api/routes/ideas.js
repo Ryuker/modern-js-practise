@@ -72,7 +72,19 @@ router.put('/:id', (req, res) => {
   res.json({ succes: true, data: idea});
 });
 
-// 
+// Delete - Remove an idea from the array
+router.delete('/:id', (req, res) => {
+  const idea = ideas.find((idea) => idea.id === +req.params.id);  // Reference to the object inside the array
+
+  if (!idea){
+    return res.status(404).json({ success: false , error: 'Resource not found' });
+  }
+
+  const ideaIndex = ideas.indexOf(idea);
+  ideas.splice(ideaIndex, 1);
+
+  res.json({ success: true, data: {} })
+});
 
 
 module.exports = router;

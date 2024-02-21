@@ -55,7 +55,7 @@ router.post('/', (req, res) => {
   res.json({ succes: true, data: idea});
 });
 
-// Put - Update an idea
+// Put - Update an idea using the specified id in the url
 router.put('/:id', (req, res) => {
   const idea = ideas.find((idea) => idea.id === +req.params.id);  // Reference to the object inside the array
 

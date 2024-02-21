@@ -1,4 +1,4 @@
-# Rest API using Express
+# CRUD Rest API using Express
 
 ## Intro to Express
 install:
@@ -126,7 +126,6 @@ router.delete('/:id', (req, res) => {
 
 We now have a CRUD Rest API 
 - **C**reates, **R**eads, **U**pdates and **D**eletes
-- but there's not data persistence yet
 
 
 

@@ -162,7 +162,12 @@ example:
 2. Setup a database (free tier), assigns a user and password etc
 3. Add data
 4. Under database>services click connect > Connect your application
-  - Copy the connection string to the project in vscode
+  - Copy the connection string 
+5. Add a .env file in the application root, 
+- add `MONGO_URI = "{your connection string}"` to it
+- make sure the .env is in gitignore, the string is sensitive
+- replace password and database name in the string.
+
 
 
 

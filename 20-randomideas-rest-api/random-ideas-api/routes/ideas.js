@@ -1,5 +1,8 @@
 const express = require('express');
 const router = express.Router();
+const Idea = require('../models/Idea');
+
+
 
 const ideas = [
   {
@@ -26,8 +29,13 @@ const ideas = [
 ];
 
 // Get all ideas
-router.get('/', (req, res) => { 
-  res.send({ success: true, data: ideas });
+router.get('/', async (req, res) => { 
+  try {
+    const ideas = await Idea.find();
+    res.json({ success: true, data: ideas });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Something went wrong'});
+  }
 });
 
 // Get a single idea
@@ -41,18 +49,19 @@ router.get('/:id', (req, res) => {
 });
 
 //Post - Add an idea
-router.post('/', (req, res) => {
-  const idea = {
-    id: ideas.length + 1,
+router.post('/', async (req, res) => {
+  const idea = new Idea({
     text: req.body.text,
     tag: req.body.tag,
-    username: req.body.username,
-    date: new Date().toISOString().slice(0, 10),
-  };
+    username: req.body.username
+  });
 
-  ideas.push(idea);
-
-  res.json({ succes: true, data: idea});
+  try {
+    const savedIdea = await idea.save();
+    res.json({ success: true, data: savedIdea });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Resource not found' });
+  }
 });
 
 // Put - Update an idea using the specified id in the url

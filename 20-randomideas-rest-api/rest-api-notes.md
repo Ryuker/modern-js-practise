@@ -242,6 +242,24 @@ module.exports = mongoose.model('Idea', IdeaSchema);
   - Easy to use for querying the database
 - You connect to it using a connection string you get from your MongoDB database
 
+## MongoDB Database Queries
+- require the Schema in the routes module
+```JS routes.js
+const Idea = require('../models/Idea');
+```
+- Getting all 'ideas' from the database
+  - `Idea.find()` returns a promise so we need to use async await
+```JS routes.js
+router.get('/', async (req, res) => { 
+  try {
+    const ideas = await Idea.find();
+    res.json({ success: true, data: ideas });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Something went wrong'});
+  }
+});
+```
+
 
 
 

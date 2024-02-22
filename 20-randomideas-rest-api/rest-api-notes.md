@@ -189,6 +189,23 @@ install:
 $npm i dotenv 
 ```
 
+## Connecting to MongoDB
+- Many approaches for this but the following is recommended
+1. Create a config folder in the root
+2. Add a `db.js` file with the following code
+- This is the most basic way to connect
+```JS db.js
+const mongoose = require('mongoose');
+
+const connectDB = async () => {
+  const conn = await mongoose.connect(process.env.MONGO_URI);
+  console.log(`MongoDB Connected: ${conn.connection.host}`);
+};
+
+module.exports = connectDB;
+```
+3. Import it to server.js and call the function.
+
 
 
 

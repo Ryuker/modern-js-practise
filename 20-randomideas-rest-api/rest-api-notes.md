@@ -236,6 +236,14 @@ const IdeaSchema = new mongoose.Schema({
 module.exports = mongoose.model('Idea', IdeaSchema);
 ```
 
+## MongoDB Compass (optional)
+[Tool Page](https://www.mongodb.com/products/tools/compass)
+- This a desktop tool for interacting with MongoDB databases
+  - Easy to use for querying the database
+- You connect to it using a connection string you get from your MongoDB database
+
+
+
 
 
 

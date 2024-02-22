@@ -158,7 +158,12 @@ example:
 - **Mongoose** - Node.js package for working with MongoDB
 
 ## MongoDB Atlas Setup
-- 
+1. Setup an account
+2. Setup a database (free tier), assigns a user and password etc
+3. Add data
+4. Under database>services click connect > Connect your application
+  - Copy the connection string to the project in vscode
+
 
 
 

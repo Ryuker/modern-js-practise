@@ -87,17 +87,14 @@ router.put('/:id', async (req, res) => {
 });
 
 // Delete - Remove an idea from the array
-router.delete('/:id', (req, res) => {
-  const idea = ideas.find((idea) => idea.id === +req.params.id);  // Reference to the object inside the array
-
-  if (!idea){
-    return res.status(404).json({ success: false , error: 'Resource not found' });
+router.delete('/:id', async(req, res) => {
+  try {
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
+  } catch(error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something went wrong'});
   }
-
-  const ideaIndex = ideas.indexOf(idea);
-  ideas.splice(ideaIndex, 1);
-
-  res.json({ success: true, data: {} })
 });
 
 

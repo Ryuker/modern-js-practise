@@ -294,7 +294,7 @@ router.post('/', async (req, res) => {
 ```
 
 - Updating an idea in the database
- - `Idea.findByIdAndUpdate()` is a promise, use async await
+ - `Idea.findByIdAndUpdate()` returns a promise, use async await
  - if `{ new: true }` is specified, a new entry is created if it's not found.
 ```JS routes.js
 // Put - Update an idea using the specified id in the url
@@ -311,6 +311,20 @@ router.put('/:id', async (req, res) => {
       { new: true } // creates a new entry if the id doesn't exist
     );
     res.json({ success: true, data: updatedIdea });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Something went wrong'});
+  }
+});
+```
+
+- Deleting an idea in the database
+  `Idea.findByIdAndDelete()` returns a promise, use async await
+``` JS routes.js
+// Delete - Remove an idea from the array
+router.delete('/:id', async(req, res) => {
+  try {
+    await Idea.findByIdAndDelete(req.params.id);
+    res.json({ success: true, data: {} });
   } catch(error) {
     res.status(500).json({ success: false, error: 'Something went wrong'});
   }

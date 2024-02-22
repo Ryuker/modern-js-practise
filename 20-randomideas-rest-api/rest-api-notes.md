@@ -206,8 +206,35 @@ module.exports = connectDB;
 ```
 3. Import it to server.js and call the function.
 
+## Mongoose Schema & Model
+1. Add a folder to the root `models`
+2. In it add a file named like so `Idea.js`
+  - it's convention to name it singular (so not ideas)
+  - it's convection to start it with an uppercase
 
+example of a scheme:
+``` JS Idea.js
+const mongoose = require('mongoose');
 
+const IdeaSchema = new mongoose.Schema({
+  text: {
+    type: String,
+    required: [true, 'Please add a text field']
+  },
+  tag: {
+    type: String,
+  },
+  username: {
+    type: String
+  },
+  date: {
+    type: Date,
+    default: Date.now
+  }
+});
+
+module.exports = mongoose.model('Idea', IdeaSchema);
+```
 
 
 

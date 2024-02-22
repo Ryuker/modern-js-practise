@@ -128,6 +128,39 @@ We now have a CRUD Rest API
 - **C**reates, **R**eads, **U**pdates and **D**eletes
 - but there's not data persistence yet
 
+## Databases
+### What is a Database
+ - A database is an **organized collection of data**
+ - A **database management system (DBMS)** is the computerized system that manages your databases
+ - Database systems can run on a file system or across multiple nodes or clusters
+ - There are different types of databases (Relational, NoSQL, etc)
+
+### What is MongoDB
+- A NoSQL/Document database, not a relational database
+- Typically faster and more scalable than traditional databases
+- Very popular in the JavaScript world (MERN, MEAN, MEVN)
+
+- Data is stored in **Documents**, no different then a JSON object
+  - but it's BSON, a subset of JSON with extra features and datatypes
+example:
+``` JS
+{
+  "_id": "1662t1216171827368",
+  "name": "John Doe",
+  "email": "johndoe@gmail.com",
+  "password": "SOME_HASHED_PW"
+}
+```
+
+### Tools We Will Use
+- **MongoDB Atlas** - cloud implementation of MongoDB
+- **MongoDB Compass** - Desktop tool to manage your databases
+- **Mongoose** - Node.js package for working with MongoDB
+
+## MongoDB Atlas Setup
+- 
+
+
 
 
 

@@ -2,8 +2,7 @@ const express = require('express');
 const router = express.Router();
 const Idea = require('../models/Idea');
 
-
-
+// Not used anymore
 const ideas = [
   {
     id: 1,
@@ -34,18 +33,20 @@ router.get('/', async (req, res) => {
     const ideas = await Idea.find();
     res.json({ success: true, data: ideas });
   } catch(error) {
+    console.log(error);
     res.status(500).json({ success: false, error: 'Something went wrong'});
   }
 });
 
 // Get a single idea
-router.get('/:id', (req, res) => { 
-  const idea = ideas.find(ideas => ideas.id === +req.params.id);
-  if (!idea){
-    return res.status(404).json({ success: false , error: 'Resource not found' });
+router.get('/:id', async (req, res) => { 
+  try {
+    const idea = await Idea.findById(req.params.id);
+    res.json({ success: true, data: idea});
+  } catch (error) {
+    console.log(error);
+    res.status(404).json({ success: false , error: 'Id not found' });
   }
-
-  res.json({ success: true, data: idea });
 });
 
 //Post - Add an idea
@@ -60,7 +61,8 @@ router.post('/', async (req, res) => {
     const savedIdea = await idea.save();
     res.json({ success: true, data: savedIdea });
   } catch(error) {
-    res.status(500).json({ success: false, error: 'Resource not found' });
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something went wrong' });
   }
 });
 

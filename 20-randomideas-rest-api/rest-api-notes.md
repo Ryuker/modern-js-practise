@@ -259,6 +259,40 @@ router.get('/', async (req, res) => {
   }
 });
 ```
+- Getting a single idea from the database by id
+  - `Idea.findById` return a promise so use async await 
+``` JS routes.js
+// Get a single idea
+router.get('/:id', async (req, res) => { 
+  try {
+    const idea = await Idea.findById(req.params.id);
+    res.json({ success: true, data: idea});
+  } catch (error) {
+    res.status(404).json({ success: false , error: 'Id not found' });
+  }
+});
+```
+- Posting an idea to the database
+  - `Idea.find()` returns a promise so we need to use async await
+  - `id` is set by the database itself
+  - `date` is already set in the Scheme to use 'now'
+``` JS routes.js
+router.post('/', async (req, res) => {
+  const idea = new Idea({
+    text: req.body.text,
+    tag: req.body.tag,
+    username: req.body.username
+  });
+
+  try {
+    const savedIdea = await idea.save();
+    res.json({ success: true, data: savedIdea });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Resource not found' });
+  }
+});
+```
+
 
 
 

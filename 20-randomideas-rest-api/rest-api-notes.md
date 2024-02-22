@@ -168,6 +168,31 @@ example:
 - make sure the .env is in gitignore, the string is sensitive
 - replace password and database name in the string.
 
+## Mongoose Connect - NPM Package
+[website](https://mongoosejs.com/) | [Docs](https://mongoosejs.com/docs/guide.html)
+- Mongoose is an object data mapper (ODM)
+- Easily installed with NPM
+
+install:
+``` JS Terminal
+$npm i mongoose 
+```
+
+
+## dotEnv - NPM Package
+[Package Page](https://www.npmjs.com/package/dotenv)
+- Allows us to use a .env file in the node application. 
+- **!!** if a variable in a .env file is changed you have to restart the server even when using nodemon.  
+
+install:
+``` JS Terminal
+$npm i dotenv 
+```
+
+
+
+
+
 
 
 

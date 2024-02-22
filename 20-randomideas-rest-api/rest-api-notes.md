@@ -331,6 +331,9 @@ router.delete('/:id', async(req, res) => {
 });
 ```
 
+-----
+Now we have a full CRUD Rest API with a Database!
+
 
 
 

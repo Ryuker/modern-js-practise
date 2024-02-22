@@ -293,6 +293,30 @@ router.post('/', async (req, res) => {
 });
 ```
 
+- Updating an idea in the database
+ - `Idea.findByIdAndUpdate()` is a promise, use async await
+ - if `{ new: true }` is specified, a new entry is created if it's not found.
+```JS routes.js
+// Put - Update an idea using the specified id in the url
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedIdea = await Idea.findByIdAndUpdate(
+      req.params.id, 
+      { 
+        $set: { 
+          text: req.body.text,
+          tag: req.body.tag,
+        }
+      },
+      { new: true } // creates a new entry if the id doesn't exist
+    );
+    res.json({ success: true, data: updatedIdea });
+  } catch(error) {
+    res.status(500).json({ success: false, error: 'Something went wrong'});
+  }
+});
+```
+
 
 
 

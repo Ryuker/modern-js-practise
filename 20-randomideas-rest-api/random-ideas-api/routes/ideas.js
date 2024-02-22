@@ -67,20 +67,23 @@ router.post('/', async (req, res) => {
 });
 
 // Put - Update an idea using the specified id in the url
-router.put('/:id', (req, res) => {
-  const idea = ideas.find((idea) => idea.id === +req.params.id);  // Reference to the object inside the array
-
-  if (!idea){
-    return res.status(404).json({ success: false , error: 'Resource not found' });
+router.put('/:id', async (req, res) => {
+  try {
+    const updatedIdea = await Idea.findByIdAndUpdate(
+      req.params.id, 
+      { 
+        $set: { 
+          text: req.body.text,
+          tag: req.body.tag,
+        }
+      },
+      { new: true }
+    );
+    res.json({ success: true, data: updatedIdea });
+  } catch(error) {
+    console.log(error);
+    res.status(500).json({ success: false, error: 'Something went wrong'});
   }
-
-  // update the keys in the idea - this is done on the same object in the array, so we don't need to override it afterwards
-  idea.text = req.body.text  || idea.text;
-  idea.tag = req.body.tag  || idea.tag;
-
-  console.log(idea);
-
-  res.json({ succes: true, data: idea});
 });
 
 // Delete - Remove an idea from the array

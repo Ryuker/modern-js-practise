@@ -9,7 +9,7 @@ connectDB();
 // Initialize a new Express app
 const app = express();
 
-// Make public folder static
+// Static Public Folder
 app.use(express.static(path.join(__dirname, 'public')));
 
 // Body parser middleware

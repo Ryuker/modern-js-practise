@@ -44,7 +44,7 @@ $npm run build
 ## Icons
 - Install fontawesome using npm
 ``` JS client terminal
-$npm i fortawesome/fontawesome-free
+$npm i @fortawesome/fontawesome-free
 ```
 
 

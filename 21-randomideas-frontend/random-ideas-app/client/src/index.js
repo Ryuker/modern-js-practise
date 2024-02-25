@@ -1,3 +1,1 @@
-import message from './message';
-
-console.log(message);
+import styles from "./styles/style.css";

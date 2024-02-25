@@ -20,5 +20,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 ``` JS client terminal
 $npm i
 ```
-4. 
+4. add Webpack config file to the client folder
+5. Change the path to resolve to the `public` folder
+``` JS webpack-config.js
+path: path.resolve(__dirname, '../public'), 
+```
 

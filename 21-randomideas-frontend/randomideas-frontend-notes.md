@@ -49,19 +49,26 @@ $npm i @fortawesome/fontawesome-free
 
 ## Modal Component
 - Basic custom modal class in vanilla JS that changes the `style.display` property to hide and show the modal.
-- The class is imported and instantiated in `main.js`
+- The class is imported and instantiated in `index.js`
 
 ## Form Component
-- Basic custom IdeForm class in vanilla JS that:
+- Basic custom IdeaForm class in vanilla JS that:
   - renders form elements
   - gets a reference to the `idea-form` element 
   - assigns a `submit` event listener to it
   - on submit populates an idea object with the form element values.
   - clears the form fields for reuse
   - dispatches an event to close the modal (since this is a seperate component, the modal needs to handle the closing)
-- The class is imported and instantiated in `main.js`
+- The class is imported and instantiated in `index.js`
 
-
+## IdeaList Component
+- Basic custom IdeaList class in vanilla JS that:
+  - Gets reference to `idea-list` element
+  - Has an object array of ideas.
+  - Has a validTags Set
+  - renders the ideas using a map function
+  - colors the idea tag elements appropriately if they are in the `Set`, grey if they arent.
+- The class is imported and instantiated in `index.js`
 
 
 

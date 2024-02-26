@@ -52,6 +52,14 @@ $npm i @fortawesome/fontawesome-free
 - The class is imported and instantiated in `main.js`
 
 ## Form Component
+- Basic custom IdeForm class in vanilla JS that:
+  - renders form elements
+  - gets a reference to the `idea-form` element 
+  - assigns a `submit` event listener to it
+  - on submit populates an idea object with the form element values.
+  - clears the form fields for reuse
+  - dispatches an event to close the modal (since this is a seperate component)
+- The class is imported and instantiated in `main.js`
 
 
 

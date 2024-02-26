@@ -47,6 +47,9 @@ $npm run build
 $npm i @fortawesome/fontawesome-free
 ```
 
+## Modal
+
+
 
 
 

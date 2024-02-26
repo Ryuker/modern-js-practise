@@ -58,7 +58,7 @@ $npm i @fortawesome/fontawesome-free
   - assigns a `submit` event listener to it
   - on submit populates an idea object with the form element values.
   - clears the form fields for reuse
-  - dispatches an event to close the modal (since this is a seperate component)
+  - dispatches an event to close the modal (since this is a seperate component, the modal needs to handle the closing)
 - The class is imported and instantiated in `main.js`
 
 

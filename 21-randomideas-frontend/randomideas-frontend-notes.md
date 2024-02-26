@@ -47,9 +47,11 @@ $npm run build
 $npm i @fortawesome/fontawesome-free
 ```
 
-## Modal
+## Modal Component
 - Basic custom modal class in vanilla JS that changes the `style.display` property to hide and show the modal.
 - The class is imported and instantiated in `main.js`
+
+## Form Component
 
 
 

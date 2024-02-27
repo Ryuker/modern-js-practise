@@ -70,5 +70,15 @@ $npm i @fortawesome/fontawesome-free
   - colors the idea tag elements appropriately if they are in the `Set`, grey if they arent.
 - The class is imported and instantiated in `index.js`
 
+## API Service - Fetch Ideas
+- Basic custom IdeaList class in vanilla JS that:
+  - Sends requests to the CRUS API we wrote earlier
+- The class is imported and instantiated in `index.js`
+
+uses axios for fetching, to install
+``` JS client terminal
+$npm i axios
+```
+
 
 

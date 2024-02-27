@@ -177,9 +177,7 @@ updateIdea(id, data) {
 - Add `deleteIdea` to '`ideasApi.js`
 ``` JS ideasApi.js
 deleteIdea(id) {
-  const username = localStorage.get('username')
-    ? localStorage.getItem('username')
-    : '';
+  const username = localStorage.getItem('username') ? localStorage.getItem('username') : '';
     
   return axios.delete(`${this._apiUrl}/${id}`, {
     data: {
@@ -193,6 +191,36 @@ deleteIdea(id) {
 - Only display the 'X' button when the idea matches the username
 - When button is pressed send a delete request to the API
 - Remove the idea from the IdeaList using the index of the Idea
+
+- added event listeners using event propogation to the delete buttons
+``` JS IdeasList.js
+addEventListeners() {
+  this._ideaListEl.addEventListener('click', (e) => {
+    if (e.target.classList.contains('fa-times')){
+      e.stopImmediatePropagation();
+      const ideaId = e.target.parentElement.parentElement.dataset.id;
+      this.deleteIdea(ideaId);
+    }
+  });
+}
+```
+- add a call to `this.addEventListeners()` in `render()` at the bottom
+- add `deleteIdeas()` method
+  - using filter we update the ideas array and return and idea with the deleted idea removed
+  - we then get the ideas again so they are rerendered.
+``` JS IdeasList.js
+async deleteIdea(ideaId) {
+  try {
+    // Delete from server
+    const res = await IdeasApi.deleteIdea(ideaId);
+    this._ideas.filter((idea) => idea._id !== ideaId);
+    this.getIdeas();
+  } catch(error) {
+    console.log(error);
+    alert('You can not delete this resource');
+  }
+}
+```
 
 
 

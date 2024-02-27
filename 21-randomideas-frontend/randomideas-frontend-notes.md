@@ -165,6 +165,14 @@ if (idea.username === req.body.username) {
 res.status(403).json( { success: false, error: 'You are not authorized to update this resource'});
 ```
 
+## Update Idea 
+- Add `updateIdea()` to `ideasApi.js`
+``` JS ideasApi.js
+updateIdea(id, data) {
+  return axios.put(`${this._apiUrl}/${id}`, data);
+}
+```
+
 ## Delete Idea from Frontend Request to API
 - Only display the 'X' button when the idea matches the username
 - When button is pressed send a delete request to the API

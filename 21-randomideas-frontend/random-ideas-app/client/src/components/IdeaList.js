@@ -14,8 +14,6 @@ class IdeaList {
     this._validTags.add('education');
     this._validTags.add('health');
     this._validTags.add('inventions');
-
-    this.render();
   }
 
   async getIdeas() {
@@ -23,6 +21,7 @@ class IdeaList {
       const res = await IdeasApi.getIdeas();
       this._ideas = res.data.data;
       console.log(this._ideas);
+      this.render();
     }catch(error) {
       console.log(error);
     }

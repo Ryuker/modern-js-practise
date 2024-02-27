@@ -165,11 +165,27 @@ if (idea.username === req.body.username) {
 res.status(403).json( { success: false, error: 'You are not authorized to update this resource'});
 ```
 
-## Update Idea 
+## Update Idea request to API from frontend
 - Add `updateIdea()` to `ideasApi.js`
 ``` JS ideasApi.js
 updateIdea(id, data) {
   return axios.put(`${this._apiUrl}/${id}`, data);
+}
+```
+
+## Delete request to API from frontend
+- Add `deleteIdea` to '`ideasApi.js`
+``` JS ideasApi.js
+deleteIdea(id) {
+  const username = localStorage.get('username')
+    ? localStorage.getItem('username')
+    : '';
+    
+  return axios.delete(`${this._apiUrl}/${id}`, {
+    data: {
+      username,
+    }
+  });
 }
 ```
 

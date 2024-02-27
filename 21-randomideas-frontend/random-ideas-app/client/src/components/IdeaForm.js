@@ -1,8 +1,10 @@
 import IdeasApi from "../services/ideasApi";
+import IdeaList from "./IdeaList";
 
 class IdeaForm {
   constructor() {
     this._formModal = document.getElementById('form-modal');
+    this._ideaList = new IdeaList();
     this.render();   // Render the form elements, we need to do this before we can get a reference to 'idea-form'
 
     this._form = document.getElementById('idea-form');
@@ -25,6 +27,9 @@ class IdeaForm {
 
     // submit idea object to API
     const newIdea = await IdeasApi.createIdea(idea);
+
+    // Add idea to list
+    this._ideaList.addIdeaToList(newIdea.data.data);
 
     // Clear the form fields
     this._form.elements.text.value = '';

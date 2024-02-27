@@ -111,6 +111,22 @@ const newIdea = await IdeasApi.createIdea(idea);
 
 ## Update IdeaList when Idea is submitted to API
 - in `IdeaList.js` add a method to add an idea to the list
+``` JS IdeaList.js
+addIdeaToList(idea) {
+  this._ideas.push(idea);
+  this.render();
+}
+```
+- Import the `IdeaList` component in `IdeaForm` and instantiate in the constructor
+``` JS IdeaForm.js
+this._ideaList = new IdeaList();
+```
+
+- modify handle submit to push the idea to the list.
+``` JS IdeaForm.js
+// Add idea to list
+this._ideaList.addIdeaToList(newIdea.data.data);
+```
 
 
 

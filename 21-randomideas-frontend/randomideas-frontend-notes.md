@@ -235,6 +235,12 @@ async deleteIdea(ideaId) {
 --- 
 We now have the full **FullStack App** working.
 
+Additionals things to add:
+- Update the Idea from the frontend 
+  - if it matches the username in localstorage
+  - could be an edit button that opens a new form
+  
+
 
 
 

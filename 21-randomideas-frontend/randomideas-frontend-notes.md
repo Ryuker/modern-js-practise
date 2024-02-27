@@ -232,6 +232,8 @@ async deleteIdea(ideaId) {
 }
 ```
 
+--- 
+We now have the full **FullStack App** working.
 
 
 

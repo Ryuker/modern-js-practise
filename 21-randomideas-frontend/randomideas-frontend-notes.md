@@ -128,6 +128,19 @@ this._ideaList = new IdeaList();
 this._ideaList.addIdeaToList(newIdea.data.data);
 ```
 
+## Save Username to Local Storage
+- Save the user to local storage
+``` JS IdeaForm.js - handleSubmit()
+localStorage.setItem('username', this._form.elements.username.value);
+```
+- in `render()` add the username as a value using a ternary
+  - use an empty string if there isn't.
+  - this persist the username when the form is opened again.
+``` JS
+`<input ..some more input attributes.. value="${localStorage.getItem('username') ? localStorage.getItem('username') : ""}"/>`
+``
+
+
 
 
 

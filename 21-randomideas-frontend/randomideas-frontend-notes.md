@@ -64,7 +64,8 @@ $npm i @fortawesome/fontawesome-free
 ## IdeaList Component
 - Basic custom IdeaList class in vanilla JS that:
   - Gets reference to `idea-list` element
-  - Uses `ideaApi.` method `getIdeas()` to get the ideas from the API
+  - has a `this._ideas` array
+  - Uses `ideaApi.` method `getIdeas()` to get the ideas from the API and populate the array. 
   - Has a validTags Set
   - renders the ideas using a map function
   - colors the idea tag elements appropriately if they are in the `Set`, grey if they arent.
@@ -81,5 +82,21 @@ uses axios for fetching, to install
 $npm i axios
 ```
 
+## Getting around CORS black to access the local API
+- Install a package to get around it
+``` JS terminal
+$npm i cors
+```
+- import it into `server.js`
+``` JS server.js
+const cors = require('cors');
+
+~~~~~ middleware below the body parser ~~~~
+// cors middleware - to allow requests from certain local ports
+app.use(cors({
+  origin: ['http://localhost:5000', 'http://localhost:3000'], 
+  credentials: true
+}));
+```
 
 

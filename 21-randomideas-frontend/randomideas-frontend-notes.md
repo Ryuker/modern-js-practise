@@ -189,6 +189,16 @@ deleteIdea(id) {
 
 ## Delete Idea from Frontend Request to API
 - Only display the 'X' button when the idea matches the username
+  - we use a ternary to set the deleteBtn element to a template string to the element or an empty string;
+``` JS IdeasList.js - render()
+~~~ in the map block ~~~~~
+const deleteBtn = idea.username === localStorage.getItem('username')
+  ? `<button class="delete"><i class="fas fa-times"></i></button>`
+  : "";
+
+~~~ nest in the template string with the card div
+${deleteBtn}
+```
 - When button is pressed send a delete request to the API
 - Remove the idea from the IdeaList using the index of the Idea
 

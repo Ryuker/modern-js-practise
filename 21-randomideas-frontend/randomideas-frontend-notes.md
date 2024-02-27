@@ -138,8 +138,17 @@ localStorage.setItem('username', this._form.elements.username.value);
   - this persist the username when the form is opened again.
 ``` JS
 `<input ..some more input attributes.. value="${localStorage.getItem('username') ? localStorage.getItem('username') : ""}"/>`
-``
+```
 
+## Add Username validation to Server
+- On the API server: 
+  - When receiving a delete request, validate the username
+    - if it doesn't match the username in the idea, deny the request.
+
+## Delete Idea from Frontend Request to API
+- Only display the 'X' button when the idea matches the username
+- When button is pressed send a delete request to the API
+- Remove the idea from the IdeaList using the index of the Idea
 
 
 

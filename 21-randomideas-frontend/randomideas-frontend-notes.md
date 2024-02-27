@@ -64,7 +64,7 @@ $npm i @fortawesome/fontawesome-free
 ## IdeaList Component
 - Basic custom IdeaList class in vanilla JS that:
   - Gets reference to `idea-list` element
-  - Has an object array of ideas.
+  - Uses `ideaApi.` method `getIdeas()` to get the ideas from the API
   - Has a validTags Set
   - renders the ideas using a map function
   - colors the idea tag elements appropriately if they are in the `Set`, grey if they arent.
@@ -72,8 +72,9 @@ $npm i @fortawesome/fontawesome-free
 
 ## API Service - Fetch Ideas
 - Basic custom IdeaList class in vanilla JS that:
-  - Sends requests to the CRUS API we wrote earlier
-- The class is imported and instantiated in `index.js`
+  - Sends requests to the CRUD API we wrote earlier
+- is initialized on export so it can be used right away when it's imported
+- The class is imported in `IdeaList.js`
 
 uses axios for fetching, to install
 ``` JS client terminal

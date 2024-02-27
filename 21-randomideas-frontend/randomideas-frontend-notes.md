@@ -144,11 +144,33 @@ localStorage.setItem('username', this._form.elements.username.value);
 - On the API server: 
   - When receiving a delete request, validate the username
     - if it doesn't match the username in the idea, deny the request.
+``` JS routes/ideas.js - Delete handler
+// Match the usernames
+if (idea.username === req.body.username) {
+  await Idea.findByIdAndDelete(req.params.id);
+  return res.json({ success: true, data: {} });
+} 
+
+// Username do not match
+res.status(403).json( { success: false, error: 'You are not authorized to delete this resource'});
+```
+- Update the Put handler to validate the user as well
+``` JS routes/ideas.js - Put handler
+if (idea.username === req.body.username) {
+  ~~~ the put handle code ~~~~
+  return res.json({ success: true, data: updatedIdea });
+}
+
+// Usernames do not match
+res.status(403).json( { success: false, error: 'You are not authorized to update this resource'});
+```
 
 ## Delete Idea from Frontend Request to API
 - Only display the 'X' button when the idea matches the username
 - When button is pressed send a delete request to the API
 - Remove the idea from the IdeaList using the index of the Idea
+
+
 
 
 

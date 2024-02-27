@@ -74,6 +74,8 @@ $npm i @fortawesome/fontawesome-free
 ## API Service - Fetch Ideas
 - Basic custom IdeaList class in vanilla JS that:
   - Sends requests to the CRUD API we wrote earlier
+    - getIdeas() - gets the data using axios get request
+    - postIdeas() - posts the data passed using axios post request
 - is initialized on export so it can be used right away when it's imported
 - The class is imported in `IdeaList.js`
 
@@ -98,5 +100,19 @@ app.use(cors({
   credentials: true
 }));
 ```
+
+## Create Idea via Form
+- Add postData() method to apiIdeas that let's axios send a post request to the API URL with the data specified.
+- Import ideasApi into `IdeaForm.js`
+- make `handleSubmit()` async and call the createIdea method
+``` JS IdeaForm.js
+const newIdea = await IdeasApi.createIdea(idea);
+```
+
+## Update IdeaList when Idea is submitted to API
+- in `IdeaList.js` add a method to add an idea to the list
+
+
+
 
 
